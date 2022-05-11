@@ -14,7 +14,7 @@ class Comment(db.Model):
     updated_at = db.Column(db.DateTime(timezone=True), onupdate=datetime.datetime.now)
 
     user = db.relationship('User', back_populates='comments')
-    video = db.relationship('Video', back_populates='comments', cascade="all, delete-orphan")
+    video = db.relationship('Video', back_populates='comments')
 
     def to_dict(self):
         return {

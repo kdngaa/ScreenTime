@@ -1,7 +1,7 @@
 from .db import db
 import datetime
 from sqlalchemy import ForeignKey
-
+from .videojoinplaylist import video_playlist
 
 class Playlist(db.Model):
     __tablename__ = 'playlists'
@@ -13,8 +13,9 @@ class Playlist(db.Model):
     created_at = db.Column('created_at', db.DateTime, default=datetime.datetime.now, nullable=False)
     updated_at = db.Column(db.DateTime(timezone=True), onupdate=datetime.datetime.now)
 
-    videos = db.relationship('Video', back_populates='playlists',secondary=video_playlist, cascade="all, delete-orphan")
+    videos = db.relationship('Video', back_populates='playlists',secondary=video_playlist)
     user = db.relationship('User', back_populates='playlists')
+
 
     def playlist_videos_to_dict(self):
         return{'video':[video.to_dict() for video in self.videos]}

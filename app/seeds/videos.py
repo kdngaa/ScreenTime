@@ -1,7 +1,9 @@
+from app.models import db, Video
+
 def seed_videos():
     video1 = Video(
         title='Spicy Vodka Pasta',
-        description='Gigi Hadid’s spicy vodka pasta recipe WITHOUT vodka 😛 IT TASTED AMAZING U GUYS',
+        description="Gigi Hadid’s spicy vodka pasta recipe WITHOUT vodka 😛 IT TASTED AMAZING U GUYS",
         thumbnail='https://res.cloudinary.com/dv3gxfdon/image/upload/v1652289293/5929454_qerhyt.jpg',
         uploadFile='https://res.cloudinary.com/dv3gxfdon/video/upload/v1652289140/Ms.merhi_6888091771662880002_kwotmz.mp4',
         userId = 1
@@ -26,7 +28,6 @@ def seed_videos():
     db.session.add(video1)
     db.session.add(video2)
     db.session.add(video3)
-    db.session.add(video4)
 
     db.session.commit()
 
