@@ -13,9 +13,9 @@ class User(db.Model, UserMixin):
     profileImg = db.Column(db.String, nullable=True)
 
 
-    playlists = db.relationship('Playlist', back_populates='user', cascade="all, delete")
-    videos = db.relationship('Video', back_populates='user', cascade="all, delete")
-    comments = db.relationship('Comment', back_populates='user', cascade="all, delete")
+    playlists = db.relationship('Playlist', back_populates='user')
+    videos = db.relationship('Video', back_populates='user')
+    comments = db.relationship('Comment', back_populates='user')
 
 
     @property

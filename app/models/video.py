@@ -15,7 +15,12 @@ class Video(db.Model):
     updated_at = db.Column(db.DateTime(timezone=True), onupdate=datetime.datetime.now)
 
     comments = db.relationship('Comment', back_populates='video', cascade="all, delete")
-    playlists = db.relationship('Playlist', back_populates='videos', cascade="all, delete")
+    playlists = db.relationship('Playlist', back_populates='videos', secondary=video_playlist)
+
+
+    def video_comments_to_dict(self):
+        return{'comment':[comment.to_dict() for comment in self.comments]}
+
 
     def to_dict(self):
         return {
