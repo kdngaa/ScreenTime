@@ -7,7 +7,10 @@ import NavBar from './components/NavBar';
 import ProtectedRoute from './components/auth/ProtectedRoute';
 import UsersList from './components/UsersList';
 import User from './components/User';
+// import User from '/.components'
 import { authenticate } from './store/session';
+import Videos from './components/Videos'
+
 
 function App() {
   const [loaded, setLoaded] = useState(false);
@@ -40,6 +43,9 @@ function App() {
         <ProtectedRoute path='/users/:userId' exact={true} >
           <User />
         </ProtectedRoute>
+        <Route path='/videos' exact={true}>
+          <Videos />
+        </Route>
         <ProtectedRoute path='/' exact={true} >
           <h1>My Home Page</h1>
         </ProtectedRoute>
