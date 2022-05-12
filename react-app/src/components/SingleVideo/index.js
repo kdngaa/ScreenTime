@@ -5,6 +5,7 @@ import * as videoActions from '../../store/videos'
 import ReactPlayer from "react-player";
 import * as commentActions from '../../store/comments'
 import './SingleVideo.css'
+import PostComment from "../PostCommentForm";
 
 const SingleVideo = () => {
     const dispatch = useDispatch()
@@ -17,7 +18,7 @@ const SingleVideo = () => {
     console.log(comments, "<================")
 
 
-    // const sessionUser = useSelector((state) => state.session.user)
+    const sessionUser = useSelector((state) => state.session.user)
 
     useEffect(() => {
         dispatch(commentActions.getComments())
@@ -27,7 +28,7 @@ const SingleVideo = () => {
     }, [dispatch, comments])
 
 
-    if(!comments){
+    if (!comments) {
         return null
     }
 
@@ -35,6 +36,10 @@ const SingleVideo = () => {
 
     return (
         <>
+
+            {/* VIDEO SECTION */}
+
+
             <div>
                 {video && (<div className="singleVideo">
                     <ReactPlayer
@@ -44,8 +49,14 @@ const SingleVideo = () => {
                         className="singgleVideo"
                     />
                     <p>{`${video.description}`}</p>
+                    <PostComment videos={video} />
+                    {sessionUser.id === video.userId}
                 </div>)}
             </div>
+
+
+            {/* COMMENT SECTION */}
+
             <div className="commentSection">
                 <h2>COMMENTS</h2>
                 {commentData.map((comment, idx) => (
