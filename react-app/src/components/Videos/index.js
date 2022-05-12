@@ -9,7 +9,7 @@ const Videos = () => {
     const dispatch = useDispatch()
     const history = useHistory()
 
-    useEffect(async() => {
+    useEffect(async () => {
         await dispatch(videoActions.loadAllVideosThunk())
     }, [dispatch])
 
@@ -22,15 +22,15 @@ const Videos = () => {
             <h1>ALL VIDEOS</h1>
             <div>
                 {videoData.map((video, idx) => (
-                    <div className="videoContainer">
-                    <a href={`/videos/${video.id}`} className='singleVideo'>
-                        <div>
-                        {/* <p>{video?.title}</p> */}
-                        {/* <img src={video?.thumbnail} style={{ height: "200px", width: "300px" }}/> */}
-                        <p>{video?.description}</p>
-                        </div>
-                        <ReactPlayer url={`${video?.uploadFile}`} controls width='10%'/>
-                    </a>
+                    <div>
+                        {/* <a href={`/videos/${video.id}`}> */}
+                            <div className='videoContainer'>
+                                {/* <p>{video?.title}</p> */}
+                                {/* <img src={video?.thumbnail} style={{ height: "200px", width: "300px" }}/> */}
+                                <ReactPlayer url={`${video?.uploadFile}`} controls width='35%' height='10%' className="oneVideo"/>
+                            </div>
+                                <p>{video?.description}</p>
+                        {/* </a> */}
                     </div>
                 ))}
             </div>

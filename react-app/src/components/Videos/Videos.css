@@ -1,9 +1,15 @@
-/* .videoContainer{
+.videoContainer{
     display: flex;
+    padding-left: 20%;
 }
 
 
-.singleVideo{
+/* .singleVideo{
     width: 1000px;
     height: 800px;
-} */
+}  */
+
+
+.oneVideo{
+    border-radius: 10%;
+}
