@@ -91,4 +91,7 @@ def delete_comment(id):
   comment = Comment.query.get(id)
   db.session.delete(comment)
   db.session.commit()
-  return comment.to_dict()
+  return 'Comment Removed'
+
+
+

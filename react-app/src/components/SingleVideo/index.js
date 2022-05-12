@@ -6,6 +6,7 @@ import ReactPlayer from "react-player";
 import * as commentActions from '../../store/comments'
 import './SingleVideo.css'
 import PostComment from "../PostCommentForm";
+import EditComment from "../EditCommentForm";
 
 const SingleVideo = () => {
     const dispatch = useDispatch()
@@ -15,8 +16,6 @@ const SingleVideo = () => {
     const video = useSelector(state => state.videos[id])
     const comments = useSelector(state => state.comments)
     const commentData = Object.values(comments)
-    console.log(comments, "<================")
-
 
     const sessionUser = useSelector((state) => state.session.user)
 
@@ -26,9 +25,9 @@ const SingleVideo = () => {
     }, [dispatch]) //no dispatching comments?
 
 
-    if (!comments) {
-        return null
-    }
+    // if (!comments) {
+    //     return null
+    // }
 
     return (
         <>
@@ -54,13 +53,20 @@ const SingleVideo = () => {
                 <h2>COMMENTS</h2>
                 {commentData.map((comment, idx) => (
                     <div key={comment.id}>
-                        <div  className="subComment">
+                        <div className="subComment">
                             {/* <p className="commentCreator">{comment.User.username} said:</p> */}
                             <p key={idx} className="commentContent">{comment.content}</p>
                         </div>
                         <div>
                             {sessionUser.id === comment.userId && (
-                                <button className="deleteBtn grow" onClick={(e) => dispatch(commentActions.removeAComment(comment.id))}>Remove Comment</button>
+                                <>
+                                    <EditComment newComment={comment}/>
+
+                                    <button className="deleteBtn grow" onClick={(e) => {
+                                        dispatch(commentActions.removeAComment(comment.id))
+                                        dispatch(commentActions.loadComments(id))
+                                    }}>Remove Comment</button>
+                                </>
                             )}
                         </div>
                     </div>
