@@ -2,20 +2,24 @@
 import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import * as commentActions from '../../store/comments'
-import { useHistory } from 'react-router-dom';
+import { useHistory, useParams } from 'react-router-dom';
 
 
 
 function PostComment({ video }) {
     const dispatch = useDispatch()
     const history = useHistory()
-    // const [userId, setUserId] = useState("")
-    // const [songId, setSongId] = useState("")
+    const { id } = useParams()
+    console.log(id, "THIS IS AN ID ===>")
     const [content, setContent] = useState("")
     const [errors, setErrors] = useState([])
 
+
     const sessionUser = useSelector((state) => state.session.user)
-    console.log(sessionUser, "=====>")
+
+
+    // const video = useSelector(state => state.videos)
+
 
 
     useEffect(() => {
@@ -35,11 +39,11 @@ function PostComment({ video }) {
     const handleSubmit = async (e) => {
         e.preventDefault()
 
-        const comment = { userId: sessionUser.id, videoId: video.id, content }
+        const comment = { content, videoId:id, userId: sessionUser.id }
 
-        await dispatch(commentActions.postComment(comment))
+        await dispatch(commentActions.postComment(comment, id))
 
-        history.push(`/videos/${video.id}`)
+        // history.push(`/videos/${video.id}`)
         setContent("")
     }
 
@@ -54,6 +58,8 @@ function PostComment({ video }) {
                     ))}
                 </ul>
                 <input
+                    type="text"
+                    name="content"
                     onChange={(e) => setContent(e.target.value)}
                     value={content}
                     placeholder='Comment here...'

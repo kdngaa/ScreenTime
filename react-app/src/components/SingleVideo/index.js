@@ -21,25 +21,18 @@ const SingleVideo = () => {
     const sessionUser = useSelector((state) => state.session.user)
 
     useEffect(() => {
-        dispatch(commentActions.getComments())
-        dispatch(commentActions.postComment())
-        dispatch(commentActions.loadComment(id))
+        dispatch(commentActions.loadComments(id))
         dispatch(videoActions.loadVideoThunk(id))
-    }, [dispatch, comments])
+    }, [dispatch]) //no dispatching comments?
 
 
     if (!comments) {
         return null
     }
 
-
-
     return (
         <>
-
             {/* VIDEO SECTION */}
-
-
             <div>
                 {video && (<div className="singleVideo">
                     <ReactPlayer
@@ -49,7 +42,7 @@ const SingleVideo = () => {
                         className="singgleVideo"
                     />
                     <p>{`${video.description}`}</p>
-                    <PostComment videos={video} />
+                    <PostComment video={video} />
                     {sessionUser.id === video.userId}
                 </div>)}
             </div>
@@ -60,26 +53,21 @@ const SingleVideo = () => {
             <div className="commentSection">
                 <h2>COMMENTS</h2>
                 {commentData.map((comment, idx) => (
-                    <>
-                        <div className="subComment">
+                    <div key={comment.id}>
+                        <div  className="subComment">
                             {/* <p className="commentCreator">{comment.User.username} said:</p> */}
                             <p key={idx} className="commentContent">{comment.content}</p>
                         </div>
                         <div>
-                            {/* {sessionUser.id === comment.userId && (
-                                <button className="deleteBtn grow" onClick={(e) => dispatch(removeAComment(comment.id))}>Remove Comment</button>
-                            )} */}
+                            {sessionUser.id === comment.userId && (
+                                <button className="deleteBtn grow" onClick={(e) => dispatch(commentActions.removeAComment(comment.id))}>Remove Comment</button>
+                            )}
                         </div>
-                    </>
+                    </div>
                 ))}
             </div>
         </>
-
-
     )
-
-
-
 }
 
 export default SingleVideo;

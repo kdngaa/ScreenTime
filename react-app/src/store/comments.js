@@ -41,19 +41,19 @@ const removeComment = comment => {
     }
 }
 
-// //GET ALL COMMENTS
-export const getComments = () => async dispatch => {
-    const result = await fetch('/api/comments/', {
-        headers: {
-            'Content-Type': 'application/json'
-        }
-    })
-    if (result.ok) {
-        const comments = await result.json()
-        dispatch(load(comments))
-        return result
-    }
-}
+// // //GET ALL COMMENTS
+// export const getComments = () => async dispatch => {
+//     const result = await fetch('/api/comments/', {
+//         headers: {
+//             'Content-Type': 'application/json'
+//         }
+//     })
+//     if (result.ok) {
+//         const comments = await result.json()
+//         dispatch(load(comments))
+//         return result
+//     }
+// }
 
 
 
@@ -61,9 +61,10 @@ export const getComments = () => async dispatch => {
 
 // POST A COMMENT
 export const postComment = (comment, id) => async dispatch => {
+    console.log(id, "============================================>")
     const res = await fetch(`/api/comments/${id}`, {
         method: 'POST',
-        header: { 'Content-Type': 'application/json' },
+        headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(comment)
     })
     if (res.ok) {
@@ -77,15 +78,12 @@ export const postComment = (comment, id) => async dispatch => {
 
 
 // // GET COMMENT BY ID
-export const loadComment = id => async dispatch => {
-    const result = await fetch(`/api/comments/${id}`, {
-        headers: {
-            'Content-Type': 'application/json'
-        }
-    });
+export const loadComments = id => async dispatch => {
+    const result = await fetch(`/api/comments/${id}`);
     if (result.ok) {
         const data = await result.json();
-        dispatch(loadOneComment(data));
+        dispatch(load(data));
+        return data
     }
 }
 
@@ -125,26 +123,27 @@ const commentReducer = (state = initialState, action) => {
                 ...state,
                 ...allComments
             };
-        case LOAD_ONE_COMMENT:
-            const newState = {}
-            newState[action.comment.comment.id] = action.comment.comment;
-            return {
-                ...state, ...newState
-            };
+        // case LOAD_ONE_COMMENT:
+        //     const newState = {}
+        //     newState[action.comment.comment.id] = action.comment.comment;
+        //     return {
+        //         ...state, ...newState
+        //     };
 
         case ADD_COMMENT:
-            if (!state[action.comment.comment.id]) {
+            if (!state[action.comment.id]) {
+                console.log(action.comment, "<<<<<=====")
                 const newState = {
                     ...state,
-                    [action.comment.comment.id]: action.comment.comment
+                    [action.comment.id]: action.comment
                 }
                 return newState
             }
             return {
                 ...state,
-                [action.comment.comment.id]: {
-                    ...state[action.comment.comment.id],
-                    ...action.comment.comment
+                [action.comment.id]: {
+                    ...state[action.comment.id],
+                    ...action.comment
                 }
             }
         // case REMOVE_COMMENT:

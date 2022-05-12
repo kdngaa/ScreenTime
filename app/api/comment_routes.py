@@ -8,20 +8,19 @@ from datetime import datetime
 comment_routes = Blueprint('comments', __name__)
 
 
-# GET ALL COMMENTS
-@comment_routes.route('/')
-def get_all_comments():
-  comments = Comment.query.all()
-  print(comments, "<==============")
-  return { 'comments': [comment.to_dict() for comment in comments] }
+# # GET ALL COMMENTS
+# @comment_routes.route('/')
+# def get_all_comments():
+#   comments = Comment.query.all()
+#   print(comments, "<==============")
+#   return { 'comments': [comment.to_dict() for comment in comments] }
 
 
 #GET SINGLE COMMENTS
 @comment_routes.route('/<int:id>')
 def get_comment(id):
-  comment = Comment.query.get(id)
-  print(comment, "<+==========")
-  return {"comment": comment.to_dict()}
+  comments = Comment.query.filter(Comment.videoId == id).all()
+  return { 'comments': [comment.to_dict() for comment in comments] }
 
 
 
@@ -35,9 +34,10 @@ def create_comment(id):
 
     form['csrf_token'].data = request.cookies['csrf_token']
 
+    print("THIS IS A STRING")
     if form.validate_on_submit():
       data = form.data
-      print(data, "<======================")
+      print(data, "<======================>>>")
       comment = Comment(
           content = data['content'],
           userId =  data['userId'],
