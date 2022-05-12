@@ -1,17 +1,29 @@
-const LOAD_COMMENTS = 'comments/load'
+const LOAD = 'comments/LOAD'
 
-const ADD_COMMENT = 'comments/addComment'
+const ADD_COMMENT = 'comments/ADD_COMMENT'
 
-const REMOVE_COMMENT = 'comments/removeComment'
+const REMOVE_COMMENT = 'comments/REMOVE_COMMENT'
+
+const LOAD_ONE_COMMENT = 'videos/LOAD_ONE_COMMENT';
 
 
 
 const load = comments => {
     return {
-        type: LOAD_COMMENTS,
+        type: LOAD,
         comments
     }
 }
+
+
+
+const loadOneComment = comment => ({
+    type: LOAD_ONE_COMMENT,
+    comment
+});
+
+
+
 
 
 const addComment = comment => {
@@ -31,11 +43,15 @@ const removeComment = comment => {
 
 // //GET ALL COMMENTS
 export const getComments = () => async dispatch => {
-    const res = await fetch('/api/comments')
-
-    if (res.ok) {
-        const comments = await res.json()
-        return dispatch(load(comments))
+    const result = await fetch('/api/comments/', {
+        headers: {
+            'Content-Type': 'application/json'
+        }
+    })
+    if (result.ok) {
+        const comments = await result.json()
+        dispatch(load(comments))
+        return result
     }
 }
 
@@ -44,15 +60,16 @@ export const getComments = () => async dispatch => {
 
 
 // POST A COMMENT
-export const postComment = (comment) => async dispatch => {
-    const res = await fetch(`/api/comments`, {
+export const postComment = (comment, id) => async dispatch => {
+    const res = await fetch(`/api/comments/${id}`, {
         method: 'POST',
         header: { 'Content-Type': 'application/json' },
         body: JSON.stringify(comment)
     })
     if (res.ok) {
         const info = await res.json()
-        dispatch(addComment(info.comment))
+        dispatch(addComment(info))
+        return info
     }
 }
 
@@ -60,12 +77,16 @@ export const postComment = (comment) => async dispatch => {
 
 
 // // GET COMMENT BY ID
-export const getCommentById = id => async (dispatch) => {
-    const res = await fetch(`/api/comments/${id}`)
-
-    const info = await res.json()
-    dispatch(load(info))
-    return res
+export const loadComment = id => async dispatch => {
+    const result = await fetch(`/api/comments/${id}`, {
+        headers: {
+            'Content-Type': 'application/json'
+        }
+    });
+    if (result.ok) {
+        const data = await result.json();
+        dispatch(loadOneComment(data));
+    }
 }
 
 
@@ -86,31 +107,50 @@ export const removeAComment = id => async dispatch => {
 
 
 
+
+
 // COMMENTS REDUCER
 // const initialState = { comments: [] }
-const commentReducer = (state = [], action) => {
-    let newState;
+
+const initialState = {}
+
+const commentReducer = (state = initialState, action) => {
     switch (action.type) {
-        case LOAD_COMMENTS:
-
-            const getComments = {}
-            action.comments.forEach(comment => {
-                console.log(comment)
-                getComments[comment.id] = comment
-            })
-
+        case LOAD:
+            const allComments = {};
+            action.comments.comments.forEach(comment => {
+                allComments[comment.id] = comment
+            });
             return {
-                ...getComments,
-                ...state.comments
-            }
+                ...state,
+                ...allComments
+            };
+        case LOAD_ONE_COMMENT:
+            const newState = {}
+            newState[action.comment.comment.id] = action.comment.comment;
+            return {
+                ...state, ...newState
+            };
 
         case ADD_COMMENT:
-            newState = { ...state, [action.comment.id]: action.comment }
-            return newState;
-        case REMOVE_COMMENT:
-            newState = { ...state }
-            delete newState[action.payload]
-            return { ...newState }
+            if (!state[action.comment.comment.id]) {
+                const newState = {
+                    ...state,
+                    [action.comment.comment.id]: action.comment.comment
+                }
+                return newState
+            }
+            return {
+                ...state,
+                [action.comment.comment.id]: {
+                    ...state[action.comment.comment.id],
+                    ...action.comment.comment
+                }
+            }
+        // case REMOVE_COMMENT:
+        //     newState = { ...state }
+        //     delete newState[action.payload]
+        //     return { ...newState }
         default:
             return state
     }

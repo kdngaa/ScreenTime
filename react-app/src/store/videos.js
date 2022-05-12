@@ -60,20 +60,6 @@ const loadOneVideo = video => ({
           ...state,
           ...allVideos
         };
-    //   case ADD_GROUP:
-    //     const newGroup = {  };
-    //     newGroup[action.group.group.id] = action.group.group;
-    //     //return newGroup;
-    //     return {...state, ...newGroup};
-    //   case EDIT_ONE_GROUP:
-    //     return {
-    //       ...state,
-    //       [action.group.id]: action.group
-    //     };
-    //   case DELETE_ONE_GROUP:
-    //     const deletedState = {...state};
-    //     delete deletedState[action.group];
-    //     return deletedState
       default:
         return state;
     }

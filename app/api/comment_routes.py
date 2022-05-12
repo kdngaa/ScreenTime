@@ -83,3 +83,12 @@ def edit_comment(id):
 #         return jsonify(commentId)
 #     else:
 #         return jsonify('not authorized'), 401
+
+
+#DELETE COMMENTS
+@comment_routes.route('/<int:id>', methods=['DELETE'])
+def delete_comment(id):
+  comment = Comment.query.get(id)
+  db.session.delete(comment)
+  db.session.commit()
+  return comment.to_dict()

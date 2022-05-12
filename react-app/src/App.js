@@ -10,7 +10,7 @@ import User from './components/User';
 // import User from '/.components'
 import { authenticate } from './store/session';
 import Videos from './components/Videos'
-
+import SingleVideo from './components/SingleVideo';
 
 function App() {
   const [loaded, setLoaded] = useState(false);
@@ -43,6 +43,9 @@ function App() {
         <ProtectedRoute path='/users/:userId' exact={true} >
           <User />
         </ProtectedRoute>
+        <Route path='/videos/:id(\d+)' exact={true}>
+          <SingleVideo />
+        </Route>
         <Route path='/videos' exact={true}>
           <Videos />
         </Route>
