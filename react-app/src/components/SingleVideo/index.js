@@ -50,7 +50,7 @@ const SingleVideo = () => {
             {/* COMMENT SECTION */}
 
             <div className="commentSection">
-                <h2>COMMENTS</h2>
+                <h2>COMMENT SECTION</h2>
                 {commentData.map((comment, idx) => (
                     <div key={comment.id}>
                         <div className="subComment">

@@ -1,6 +1,10 @@
 from flask import Blueprint, jsonify
 from flask_login import login_required, current_user
 from app.models import db, Video, Comment
+from app.forms.video_form import UploadVideoForm, UpdateVideoForm
+from app.awsUpload import (upload_file_to_s3, allowed_file, get_unique_filename)
+
+
 
 video_routes = Blueprint('videos', __name__)
 
@@ -22,8 +26,104 @@ def get_video(id):
 
 
 #GET COMMENTS ON SINGLE VIDEOS
-@video_routes.route('/<int:id>/comments')
-def get_comments_from_video(id):
-  videos = Video.query.get(id)
-  comments = videos.videos
-  return { 'comments': [comment.to_dict() for comment in comments] }
+# @video_routes.route('/<int:id>/comments')
+# def get_comments_from_video(id):
+#   videos = Video.query.get(id)
+#   comments = videos.videos
+#   return { 'comments': [comment.to_dict() for comment in comments] }
+
+
+
+# #UPLOAD VIDEOS
+# @video_routes.route('/<int:id>', methods=["POST"])
+# def upload_video(id):
+
+#     # user = current_user.to_dict()
+
+#     form = UploadVideoForm()
+
+#     form['csrf_token'].data = request.cookies['csrf_token']
+
+#     if form.validate_on_submit():
+#       data = form.data
+
+#       video = Video(
+#           description = data['description'],
+#           userId =  data['userId'],
+#           videoUrl="url"
+#         )
+
+#       db.session.add(video)
+#       db.session.commit()
+
+#       return jsonify(video.to_dict())
+#     return jsonify(form.errors)
+
+
+
+
+
+# #UPDATE VIDEOS
+# @video_routes.route('/<int:id>', methods=["PUT"])
+# def edit_video(id):
+#     form = UpdateVideoForm()
+#     video = Video.query.get(id)
+
+#     form['csrf_token'].data = request.cookies['csrf_token']
+#     if form.validate_on_submit():
+#       data= form.data
+#       video.content = data['content']
+
+#       db.session.commit()
+
+#       return jsonify(video.to_dict())
+#     return jsonify(form.errors)
+
+
+
+#DELETE VIDEOS
+@video_routes.route('/<int:id>', methods=['DELETE'])
+def delete_video(id):
+  video = Video.query.get(id)
+  db.session.delete(video)
+  db.session.commit()
+  return 'Video Removed'
+
+
+
+
+#UPLOAD VIDEOS
+@video_routes.route('/new', methods=['POST'])
+def upload_video():
+  form = UploadVideoForm()
+
+  form['csrf_token'].data = request.cookies['csrf_token']
+
+  if form.validate_on_submit():
+    if "video" not in request.files:
+      return {"errors": "video required"}, 400
+
+    video = request.files["video"]
+    print('video', video)
+    if not allowed_file(video.filename):
+        return {"errors": "file type not permitted"}, 400
+
+    video.filename = get_unique_filename(video.filename)
+
+    upload = upload_file_to_s3(video)
+    print('upload', upload)
+    if "url" not in upload:
+      # if the dictionary doesn't have a url key
+      # it means that there was an error when we tried to upload
+      # so we send back that error message
+      return upload, 400
+
+    url = upload["url"]
+    # flask_login allows us to get the current user from the request
+    new_video = Video(userId=current_user.id, uploadFile=url, description=form.data['description'])
+    db.session.add(new_video)
+    db.session.commit()
+    print('TEST', new_video.to_dict())
+    return {"video": new_video.to_dict()}
+
+  return form.errors

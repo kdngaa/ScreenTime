@@ -4,9 +4,9 @@ const ADD_COMMENT = 'comments/ADD_COMMENT'
 
 const REMOVE_COMMENT = 'comments/REMOVE_COMMENT'
 
-const LOAD_ONE_COMMENT = 'videos/LOAD_ONE_COMMENT';
+const LOAD_ONE_COMMENT = 'comments/LOAD_ONE_COMMENT';
 
-const EDIT_COMMENT = 'videos/EDIT_COMMENT'
+const EDIT_COMMENT = 'comments/EDIT_COMMENT'
 
 
 const load = comments => {

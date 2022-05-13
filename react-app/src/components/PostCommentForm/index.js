@@ -3,7 +3,7 @@ import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import * as commentActions from '../../store/comments'
 import { useHistory, useParams } from 'react-router-dom';
-
+import './CommentForm.css'
 
 
 function PostComment({ video }) {
@@ -51,11 +51,11 @@ function PostComment({ video }) {
         <section>
             <form onSubmit={handleSubmit}>
                 <ul className="errors">
-                    {errors.map((error, indx) => (
+                    {/* {errors.map((error, indx) => (
                         <li key={indx}>
                             {error}
                         </li>
-                    ))}
+                    ))} */}
                 </ul>
                 <input
                     type="text"
@@ -63,6 +63,7 @@ function PostComment({ video }) {
                     onChange={(e) => setContent(e.target.value)}
                     value={content}
                     placeholder='Comment here...'
+                    className="commentBox"
                 />
                 <button type="submit" className='commentBtn' disabled={errors.length > 0}>Submit Comment</button>
 

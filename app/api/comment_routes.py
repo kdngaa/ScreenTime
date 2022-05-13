@@ -34,20 +34,18 @@ def create_comment(id):
 
     form['csrf_token'].data = request.cookies['csrf_token']
 
-    print("THIS IS A STRING")
     if form.validate_on_submit():
       data = form.data
-      print(data, "<======================>>>")
+
       comment = Comment(
           content = data['content'],
           userId =  data['userId'],
           videoId = id
         )
 
-        # comment = Comment(**data)
       db.session.add(comment)
       db.session.commit()
-      # print(comment.to_dict())
+
       return jsonify(comment.to_dict())
     return jsonify(form.errors)
 
@@ -71,20 +69,6 @@ def edit_comment(id):
     return jsonify(form.errors)
 
 
-# #DELETE COMMENTS
-# @comment_routes.route('/<int:id>', methods=["DELETE"])
-# def delete_comment(videoId, commentId):
-#     comment = Comment.query.get(commentId)
-#     sessionUserId = int(session['_user_id'])
-
-#     if comment.to_dict()['userId'] == sessionUserId:
-#         db.session.delete(comment)
-#         db.session.commit()
-#         return jsonify(commentId)
-#     else:
-#         return jsonify('not authorized'), 401
-
-
 #DELETE COMMENTS
 @comment_routes.route('/<int:id>', methods=['DELETE'])
 def delete_comment(id):
@@ -92,6 +76,3 @@ def delete_comment(id):
   db.session.delete(comment)
   db.session.commit()
   return 'Comment Removed'
-
-
-

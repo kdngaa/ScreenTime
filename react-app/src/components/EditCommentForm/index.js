@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import * as commentActions from '../../store/comments'
 import { useHistory, useParams } from 'react-router-dom';
-
+import './EditComment.css'
 
 
 function EditComment({ newComment }) {
@@ -64,7 +64,7 @@ function EditComment({ newComment }) {
                     value={content}
                     placeholder='Comment here...'
                 />
-                <button type="submit" className='commentBtn' disabled={errors.length > 0}>Edit Comment</button>
+                <button type="submit" className='editBtn' disabled={errors.length > 0}>Edit Comment</button>
 
             </form>
         </section>
