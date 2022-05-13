@@ -11,6 +11,7 @@ import User from './components/User';
 import { authenticate } from './store/session';
 import Videos from './components/Videos'
 import SingleVideo from './components/SingleVideo';
+import Upload from './components/UploadVideoForm';
 
 function App() {
   const [loaded, setLoaded] = useState(false);
@@ -42,6 +43,9 @@ function App() {
         </ProtectedRoute>
         <ProtectedRoute path='/users/:userId' exact={true} >
           <User />
+        </ProtectedRoute>
+        <ProtectedRoute path='/videos/new' exact={true} >
+          <Upload />
         </ProtectedRoute>
         <Route path='/videos/:id(\d+)' exact={true}>
           <SingleVideo />

@@ -2,16 +2,33 @@ import boto3
 import botocore
 import os
 import uuid
+from botocore.config import Config
+
 
 BUCKET_NAME = os.environ.get("S3_BUCKET")
 S3_LOCATION = f"https://{BUCKET_NAME}.s3.amazonaws.com/"
 ALLOWED_EXTENSIONS = {"pdf", "png", "jpg", "jpeg", "gif", "mp4", "3gp", "mov", "m4a", "m4v"}
 
+
+
+my_config = Config(
+    region_name = 'us-east-1',
+    signature_version = 'v3',
+    retries = {
+        'max_attempts': 10,
+        'mode': 'standard'
+    }
+)
+
+
+
 s3 = boto3.client(
    "s3",
    aws_access_key_id=os.environ.get("S3_KEY"),
-   aws_secret_access_key=os.environ.get("S3_SECRET")
+   aws_secret_access_key=os.environ.get("S3_SECRET"),
+   config=my_config
 )
+
 
 
 def allowed_file(filename):

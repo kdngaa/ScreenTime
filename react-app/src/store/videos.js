@@ -92,13 +92,12 @@ export const postVideo = (videoId) => async dispatch => {
 
   const res = await fetch(`/api/videos/new`, {
     method: 'POST',
-    headers: { 'Content-Type': 'application/json' },
     body: formData
   })
   if (res.ok) {
     const info = await res.json()
     dispatch(addVideo(info))
-    return res
+    // return res
   }
 }
 

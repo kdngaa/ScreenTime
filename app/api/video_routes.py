@@ -1,4 +1,4 @@
-from flask import Blueprint, jsonify
+from flask import Blueprint, jsonify, request
 from flask_login import login_required, current_user
 from app.models import db, Video, Comment
 from app.forms.video_form import UploadVideoForm, UpdateVideoForm
@@ -81,7 +81,7 @@ def get_video(id):
 
 
 
-#DELETE VIDEOS
+# DELETE VIDEOS
 @video_routes.route('/<int:id>', methods=['DELETE'])
 def delete_video(id):
   video = Video.query.get(id)
@@ -92,26 +92,26 @@ def delete_video(id):
 
 
 
-#UPLOAD VIDEOS
-@video_routes.route('/new', methods=['POST'])
+# UPLOAD VIDEOS
+@video_routes.route('/new', methods=['GET', 'POST'])
 def upload_video():
   form = UploadVideoForm()
 
   form['csrf_token'].data = request.cookies['csrf_token']
 
   if form.validate_on_submit():
-    if "video" not in request.files:
+    if "uploadFile" not in request.files:
       return {"errors": "video required"}, 400
 
-    video = request.files["video"]
-    print('video', video)
-    if not allowed_file(video.filename):
+    uploadFile = request.files["uploadFile"]
+    print(uploadFile, "<==============")
+    if not allowed_file(uploadFile.filename):
         return {"errors": "file type not permitted"}, 400
-
-    video.filename = get_unique_filename(video.filename)
-
-    upload = upload_file_to_s3(video)
-    print('upload', upload)
+    print(uploadFile.filename, "<<<====>>>>>>>>>")
+    uploadFile.filename = get_unique_filename(uploadFile.filename)
+    print(uploadFile, "<<<<<<<<<<<<<>>>>>>========")
+    upload = upload_file_to_s3(uploadFile)
+    print(upload, "<<<<<<<============")
     if "url" not in upload:
       # if the dictionary doesn't have a url key
       # it means that there was an error when we tried to upload
@@ -123,7 +123,33 @@ def upload_video():
     new_video = Video(userId=current_user.id, uploadFile=url, description=form.data['description'])
     db.session.add(new_video)
     db.session.commit()
-    print('TEST', new_video.to_dict())
-    return {"video": new_video.to_dict()}
+
+    return {"uploadFile": video.to_dict()}
 
   return form.errors
+
+
+# #UPLOAD VIDEOS
+# @video_routes.route('/new', methods=["POST"])
+# def create_video():
+
+#     # user = current_user.to_dict()
+
+#     form = UploadVideoForm()
+
+#     form['csrf_token'].data = request.cookies['csrf_token']
+
+#     if form.validate_on_submit():
+#       data = form.data
+
+#       newVideo = Video(
+#           description = data['description'],
+#           userId =  data['userId'],
+#           uploadFile= data['uploadFile']
+#         )
+
+#       db.session.add(newVideo)
+#       db.session.commit()
+
+#       return jsonify(newVideo.to_dict())
+#     return jsonify(form.errors)
