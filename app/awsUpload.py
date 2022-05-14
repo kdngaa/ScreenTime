@@ -13,7 +13,7 @@ ALLOWED_EXTENSIONS = {"pdf", "png", "jpg", "jpeg", "gif", "mp4", "3gp", "mov", "
 
 my_config = Config(
     region_name = 'us-east-1',
-    signature_version = 'v3',
+    signature_version = 's3v4',
     retries = {
         'max_attempts': 10,
         'mode': 'standard'
@@ -22,12 +22,23 @@ my_config = Config(
 
 
 
+# s3 = boto3.client(
+#    "s3",
+#    aws_access_key_id=os.environ.get("S3_KEY"),
+#    aws_secret_access_key=os.environ.get("S3_SECRET"),
+#    config=my_config
+# )
+
+
 s3 = boto3.client(
    "s3",
-   aws_access_key_id=os.environ.get("S3_KEY"),
-   aws_secret_access_key=os.environ.get("S3_SECRET"),
+   aws_access_key_id=os.environ.get("AWS_ACCESS_KEY_ID"),
+   aws_secret_access_key=os.environ.get("AWS_SECRET_ACCESS_KEY"),
    config=my_config
 )
+
+# print(os.environ.get("AWS_ACCESS_KEY_ID"), "<<<>>>>=======")
+# print(os.environ.get("AWS_SECRET_ACCESS_KEY"), "<<<>>>>=======")
 
 
 

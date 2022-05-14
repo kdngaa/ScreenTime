@@ -124,7 +124,7 @@ def upload_video():
     db.session.add(new_video)
     db.session.commit()
 
-    return {"uploadFile": video.to_dict()}
+    return {"uploadFile": new_video.to_dict()}
 
   return form.errors
 
