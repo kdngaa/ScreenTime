@@ -111,9 +111,10 @@ export const postVideo = (videoId) => async dispatch => {
 const initialState = {}
 
 const videoReducer = (state = initialState, action) => {
+  let newState;
   switch (action.type) {
     case LOAD_ONE_VIDEO:
-      const newState = {}
+      newState = {}
       newState[action.video.video.id] = action.video.video;
       return {
         ...state, ...newState
@@ -130,7 +131,7 @@ const videoReducer = (state = initialState, action) => {
     case ADD_VIDEO:
       if (!state[action.video.id]) {
         console.log(action.video, "<<<<<=====")
-        newState = {
+      newState = {
           ...state,
           [action.video.id]: action.video
         }
