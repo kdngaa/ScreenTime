@@ -81,7 +81,7 @@ function Upload() {
                     required
                     className="fileBtn"
                 />
-                <button className="updateBtn" type="Submit" disabled={errors.length > 0}>Post Video</button>
+                <button className="updateBtn" type="Submit" disabled={errors.length > 0}>Upload Video</button>
             </form>
         </section>
     )

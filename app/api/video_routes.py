@@ -153,3 +153,21 @@ def upload_video():
 
 #       return jsonify(newVideo.to_dict())
 #     return jsonify(form.errors)
+
+
+
+#UPDATE VIDEOS
+@video_routes.route('/<int:id>', methods=["PUT"])
+def edit_video(id):
+    form = UpdateVideoForm()
+    video = Video.query.get(id)
+
+    form['csrf_token'].data = request.cookies['csrf_token']
+    if form.validate_on_submit():
+      data= form.data
+      video.description = data['description']
+
+      db.session.commit()
+
+      return jsonify(video.to_dict())
+    return jsonify(form.errors)

@@ -7,6 +7,8 @@ import * as commentActions from '../../store/comments'
 import './SingleVideo.css'
 import PostComment from "../PostCommentForm";
 import EditComment from "../EditCommentForm";
+import EditVideo from "../EditVideoForm";
+
 
 const SingleVideo = () => {
     const dispatch = useDispatch()
@@ -41,6 +43,11 @@ const SingleVideo = () => {
                         className="singgleVideo"
                     />
                     <p>{`${video.description}`}</p>
+                    <button className="deleteBtn grow" onClick={(e) => {
+                        dispatch(videoActions.removeAVideo(video.id))
+                        // dispatch(videoActions.loadAllVideosThunk(id))
+                    }}>Delete Video</button>
+                    <EditVideo newVideo={video} />
                     <PostComment video={video} />
                     {sessionUser.id === video.userId}
                 </div>)}
@@ -60,7 +67,7 @@ const SingleVideo = () => {
                         <div>
                             {sessionUser.id === comment.userId && (
                                 <>
-                                    <EditComment newComment={comment}/>
+                                    <EditComment newComment={comment} />
 
                                     <button className="deleteBtn grow" onClick={(e) => {
                                         dispatch(commentActions.removeAComment(comment.id))
