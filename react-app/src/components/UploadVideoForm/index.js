@@ -39,7 +39,7 @@ function Upload() {
 
         dispatch(postVideo(video))
 
-        // history.push(`videos/${video.id}`) //redirect to home after added
+        history.push(`/videos`) //redirect to home after added
     }
 
 
