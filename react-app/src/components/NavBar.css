@@ -1,0 +1,72 @@
+.authButton{
+    padding-left: 4%;
+}
+
+.authBtn{
+    text-decoration: none;
+    color: white;
+    font-weight: bolder;
+    font-size: 20px;
+}
+
+
+
+.authBtn{
+    background:
+    linear-gradient(
+      to right,
+      rgb(247, 247, 247),
+      rgb(255, 255, 255)
+    ),
+    linear-gradient(
+      to right,
+      rgba(255, 0, 0, 1),
+      rgba(255, 0, 180, 1),
+      rgba(0, 100, 200, 1)
+  );
+  background-size: 100% 3px, 0 3px;
+  background-position: 100% 100%, 0 100%;
+  background-repeat: no-repeat;
+  transition: background-size 400ms;
+}
+
+
+
+.authBtn:hover{
+    background-size: 0 3px, 100% 3px;
+}
+
+
+
+
+
+.authButtons{
+    display: flex;
+    justify-content: flex-end;
+    /* position: absolute;
+    right: 0; */
+}
+
+.logOutBtn{
+    padding-left: 4%;
+    padding-right: 2%;
+}
+
+.NavBar{
+  background-color: black;
+  top: 0;
+  left: 0;
+  right: 0;
+  position: fixed;
+  z-index: 100;
+  width: 100%;
+  clear: both;
+  height: 60px;
+}
+
+
+.logo{
+    position: absolute;
+    top: 0;
+    padding-left: 2%;
+}

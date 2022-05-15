@@ -1,0 +1,40 @@
+button:hover {
+    cursor: pointer;
+  }
+
+  footer {
+    background-color: black;
+    bottom: 0;
+    left: 0;
+    position: fixed;
+    z-index: 100;
+    width: 100%;
+    clear: both;
+    height: 60px;
+  }
+
+  /* .footer-top {
+    background-color: black;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    position: absolute;
+    z-index: 100;
+    width: 100%;
+    clear: both;
+    height: 60px;
+  } */
+
+  /* .footer-top li {
+    margin-bottom: 15px;
+  } */
+
+
+  .info{
+    color: white;
+  }
+
+  .creators{
+    display: flex;
+    justify-content: space-evenly;
+  }

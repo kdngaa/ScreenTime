@@ -12,6 +12,8 @@ import { authenticate } from './store/session';
 import Videos from './components/Videos'
 import SingleVideo from './components/SingleVideo';
 import Upload from './components/UploadVideoForm';
+import SplashPage from './components/Splash';
+import Footer from './components/Footer';
 
 function App() {
   const [loaded, setLoaded] = useState(false);
@@ -47,16 +49,17 @@ function App() {
         <ProtectedRoute path='/videos/new' exact={true} >
           <Upload />
         </ProtectedRoute>
-        <Route path='/videos/:id(\d+)' exact={true}>
+        <ProtectedRoute path='/videos/:id(\d+)' exact={true}>
           <SingleVideo />
-        </Route>
-        <Route path='/videos' exact={true}>
+        </ProtectedRoute>
+        <ProtectedRoute path='/videos' exact={true}>
           <Videos />
-        </Route>
+        </ProtectedRoute>
         <ProtectedRoute path='/' exact={true} >
-          <h1>My Home Page</h1>
+          <SplashPage/>
         </ProtectedRoute>
       </Switch>
+      <Footer />
     </BrowserRouter>
   );
 }
