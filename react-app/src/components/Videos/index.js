@@ -19,7 +19,7 @@ const Videos = () => {
 
     return (
         <>
-            <h1 className="allVideosHeader">#foryoupage</h1>
+            <h1 className="allVideosHeader">#trending</h1>
             <div className="allVideos">
                 {videoData.map((video, idx) => (
                     <div className="allVidsContainer">
