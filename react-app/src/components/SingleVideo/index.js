@@ -46,6 +46,7 @@ const SingleVideo = () => {
                     <button className="deleteBtn grow" onClick={(e) => {
                         dispatch(videoActions.removeAVideo(video.id))
                         // dispatch(videoActions.loadAllVideosThunk(id))
+                        history.push(`/videos`)
                     }}>Delete Video</button>
                     <EditVideo newVideo={video} />
                     <PostComment video={video} />

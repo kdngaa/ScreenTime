@@ -1,6 +1,7 @@
 .videoContainer{
     display: flex;
     padding-left: 20%;
+    padding-top: 1%;
 }
 
 
@@ -17,4 +18,25 @@
 .allVideos{
     padding-top: 5%;
     padding-bottom: 5%;
+}
+
+.allVideosHeader{
+    align-content: center;
+    padding-top: 5%;
+}
+
+
+.videoDescription{
+    padding-left: 20%;
+    text-decoration: none;
+}
+
+.allVidsContainer{
+    padding-bottom: 6%;
+}
+
+.vidLink{
+    color: white;
+    text-decoration: none;
+    padding-left: 20%;
 }

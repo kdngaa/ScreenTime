@@ -19,19 +19,20 @@ const Videos = () => {
 
     return (
         <>
-            <h1>ALL VIDEOS</h1>
+            <h1 className="allVideosHeader">#foryoupage</h1>
             <div className="allVideos">
                 {videoData.map((video, idx) => (
-                    <div>
-                        {/* <a href={`/videos/${video.id}`}> */}
+                    <div className="allVidsContainer">
+                        <a href={`/videos/${video.id}`} className="vidLink">
+                            See More
+                        </a>
                             <div className='videoContainer'>
                                 {/* <p>{video?.title}</p> */}
                                 {/* <img src={video?.thumbnail} style={{ height: "200px", width: "300px" }}/> */}
-                                <ReactPlayer url={`${video?.uploadFile}`} controls width='35%' height='10%' className="oneVideo"/>
+                                <ReactPlayer url={`${video?.uploadFile}`} controls width='30%' height='700px' className="oneVideo"/>
                             </div>
                                 {/* <p className="videoCreator">{video.User.username} posted:</p> */}
-                                <p>{video?.description}</p>
-                        {/* </a> */}
+                                <p className="videoDescription">{video?.description}</p>
                     </div>
                 ))}
             </div>
