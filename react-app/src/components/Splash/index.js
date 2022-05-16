@@ -8,7 +8,9 @@ function SplashPage() {
 
         <div className='mainSplash'>
             <img src="https://res.cloudinary.com/dv3gxfdon/image/upload/v1652615974/2_vx8nga.png" style={{ width: '750px', height: '750px' }} className="homePic" />
+            <a href="https://www.apple.com/app-store/">
             <img src="https://res.cloudinary.com/dv3gxfdon/image/upload/v1652615978/5_eupeqd.png" style={{ width: '750px', height: '750px' }} />
+            </a>
         </div>
 
     )

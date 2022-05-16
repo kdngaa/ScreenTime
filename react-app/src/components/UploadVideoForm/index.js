@@ -10,6 +10,7 @@ function Upload() {
     const history = useHistory()
     const [description, setDescription] = useState("")
     const [uploadFile, setUploadFile] = useState(null)
+    const [videoLoading, setVideoLoading] = useState(false);
 
     const [errors, setErrors] = useState([])
 
@@ -21,7 +22,7 @@ function Upload() {
         const errors = []
 
         if (!description) errors.push("Please provide description")
-        if (!uploadFile) errors.push("Please include valid link")
+        if (!uploadFile) errors.push("Please use an MP4 file")
 
         setErrors(errors)
     }, [description, uploadFile])
@@ -32,14 +33,16 @@ function Upload() {
     // }
 
 
-    const handleSubmit = (e) => {
+    const handleSubmit = async (e) => {
         e.preventDefault()
-
+        setVideoLoading(true);
         const video = { userId: sessionUser.id, description, uploadFile }
 
-        dispatch(postVideo(video))
+        await dispatch(postVideo(video))
 
-        history.push(`/videos/${video.id}`) //redirect to home after added
+        setVideoLoading(false);
+
+        history.push(`/videos`) //redirect to home after added
     }
 
 
@@ -51,43 +54,60 @@ function Upload() {
 
 
     return (
-        <section>
-            <form className="uploadVideoForm" onSubmit={handleSubmit}>
-                <ul className="errors">
-                    {errors.map((error, indx) => (
-                        <li key={indx}>
-                            {error}
-                        </li>
-                    ))}
-                </ul>
-                <input
-                    type="text"
-                    placeholder="Description"
-                    value={description}
-                    onChange={(e) => setDescription(e.target.value)}
-                    required
-                    className="fieldText"
-                />
+        <body className="uploadBody">
+            <section className="container">
+                <form className="uploadVideoForm" onSubmit={handleSubmit}>
+                    <div class="brand-logo"></div>
+                    {/* <div class="brand-title">Upload</div> */}
+                    <ul className="errors">
+                        {errors.map((error, indx) => (
+                            <li key={indx}>
+                                {error}
+                            </li>
+                        ))}
+                    </ul>
+                    <div className="uploadInput">
+                        <label>CAPTION</label>
+                        <div className="miniDiv">
+                            <input
+                                type="text"
+                                placeholder="Type here..."
+                                value={description}
+                                onChange={(e) => setDescription(e.target.value)}
+                                // required
+                                className="fieldText"
+                            />
+                        </div>
 
 
-
-                {/* <label className="fileHead">Please use Cloudinary for your MP3/MP4 files</label> */}
-                <input
-                    type="file"
-                    name="uploadFile"
-                    // placeholder="MP3/MP4"
-                    // value={uploadFile}
-                    onChange={uploadVideo}
-                    required
-                    className="fileBtn"
-                />
-                <button className="updateBtn" type="Submit" disabled={errors.length > 0}>Upload Video</button>
-            </form>
-        </section>
+                        {/* <label className="fileHead">Please use Cloudinary for your MP3/MP4 files</label> */}
+                        <label>FILE UPLOAD</label>
+                        <div className="miniDiv">
+                            <input
+                                type="file"
+                                name="uploadFile"
+                                // placeholder="MP3/MP4"
+                                // value={uploadFile}
+                                accept="video/*"
+                                onChange={uploadVideo}
+                                // required
+                                className="fileBtn"
+                            />
+                        </div>
+                        <button className="updateBtn" type="Submit" disabled={errors.length > 0}>Upload Video</button>
+                        {(videoLoading) &&
+                            <figure>
+                                <div class="dot white"></div>
+                                <div class="dot"></div>
+                                <div class="dot"></div>
+                                <div class="dot"></div>
+                                <div class="dot"></div>
+                            </figure>
+                        }
+                    </div>
+                </form>
+            </section>
+        </body>
     )
-
-
 }
-
-
 export default Upload;

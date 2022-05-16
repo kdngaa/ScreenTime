@@ -104,14 +104,14 @@ def upload_video():
       return {"errors": "video required"}, 400
 
     uploadFile = request.files["uploadFile"]
-    print(uploadFile, "<==============")
+
     if not allowed_file(uploadFile.filename):
         return {"errors": "file type not permitted"}, 400
-    print(uploadFile.filename, "<<<====>>>>>>>>>")
+
     uploadFile.filename = get_unique_filename(uploadFile.filename)
-    print(uploadFile, "<<<<<<<<<<<<<>>>>>>========")
+
     upload = upload_file_to_s3(uploadFile)
-    print(upload, "<<<<<<<============")
+
     if "url" not in upload:
       # if the dictionary doesn't have a url key
       # it means that there was an error when we tried to upload

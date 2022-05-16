@@ -89,6 +89,8 @@ export const postVideo = (videoId) => async dispatch => {
     formData.append('uploadFile', uploadFile)
   }
 
+  // setVideoLoading(true);
+
 
   const res = await fetch(`/api/videos/new`, {
     method: 'POST',
@@ -166,19 +168,18 @@ const videoReducer = (state = initialState, action) => {
     case ADD_VIDEO:
       if (!state[action.video.id]) {
         console.log(action.video, "<<<<<=====")
-        newState = {
-          ...state,
-          [action.video.id]: action.video
-        }
+        newState = {...state}
+          // [action.video.id]: action.video
+        newState[action.video.id] = action.video;
         return newState
       }
-      return {
-        ...state,
-        [action.video.id]: {
-          ...state[action.video.id],
-          ...action.video
-        }
-      }
+      // return {
+      //   ...state,
+      //   [action.video.id]: {
+      //     ...state[action.video.id],
+      //     ...action.video
+      //   }
+      // }
     case EDIT_VIDEO:
       newState = { ...state }
       newState[action.video.id] = action.video
