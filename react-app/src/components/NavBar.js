@@ -13,7 +13,7 @@ const NavBar = () => {
     <div className='NavBar'>
       <div className='logo'>
         <a href="/">
-          <img src="ST2.png" style={{ width: '230px', height: '60px' }} />
+          <img src="https://res.cloudinary.com/dv3gxfdon/image/upload/v1652687471/ST2_ht1l9v.png" style={{ width: '230px', height: '60px' }} />
         </a>
       </div>
       <nav >

@@ -20,7 +20,7 @@ const Videos = () => {
     return (
         <>
             <h1>ALL VIDEOS</h1>
-            <div>
+            <div className="allVideos">
                 {videoData.map((video, idx) => (
                     <div>
                         {/* <a href={`/videos/${video.id}`}> */}
@@ -29,6 +29,7 @@ const Videos = () => {
                                 {/* <img src={video?.thumbnail} style={{ height: "200px", width: "300px" }}/> */}
                                 <ReactPlayer url={`${video?.uploadFile}`} controls width='35%' height='10%' className="oneVideo"/>
                             </div>
+                                {/* <p className="videoCreator">{video.User.username} posted:</p> */}
                                 <p>{video?.description}</p>
                         {/* </a> */}
                     </div>

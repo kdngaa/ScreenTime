@@ -34,7 +34,7 @@ const SingleVideo = () => {
     return (
         <>
             {/* VIDEO SECTION */}
-            <div>
+            <div className="singleVideoContainer">
                 {video && (<div className="singleVideo">
                     <ReactPlayer
                         url={`${video.uploadFile}`}
