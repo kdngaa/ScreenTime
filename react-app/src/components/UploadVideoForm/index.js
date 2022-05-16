@@ -18,14 +18,14 @@ function Upload() {
 
 
 
-    useEffect(() => {
-        const errors = []
+    // useEffect(() => {
+    //     const errors = []
 
-        if (!description) errors.push("Please provide description")
-        if (!uploadFile) errors.push("Please use an MP4 file")
+    //     if (!description) errors.push("Please provide description")
+    //     if (!uploadFile) errors.push("Please use an MP4 file")
 
-        setErrors(errors)
-    }, [description, uploadFile])
+    //     setErrors(errors)
+    // }, [description, uploadFile])
 
 
     // if (!sessionUser) {  //if user is not log in, form will not show
@@ -35,12 +35,27 @@ function Upload() {
 
     const handleSubmit = async (e) => {
         e.preventDefault()
+
+
+        const errors = []
+
+        if (!description) errors.push("Please provide description")
+        if (!uploadFile) errors.push("Please use an MP4 file")
+
+        if (errors.length) {
+            setErrors(errors)
+            return
+        }
+
         setVideoLoading(true);
         const video = { userId: sessionUser.id, description, uploadFile }
 
+        console.log(video, "<<<<<=========VIDEO")
         await dispatch(postVideo(video))
 
         setVideoLoading(false);
+
+        setErrors([])
 
         history.push(`/videos`) //redirect to home after added
     }
@@ -67,7 +82,7 @@ function Upload() {
                         ))}
                     </ul>
                     <div className="uploadInput">
-                        <label>CAPTION</label>
+                        <label >CAPTION</label>
                         <div className="miniDiv">
                             <input
                                 type="text"
@@ -75,7 +90,7 @@ function Upload() {
                                 value={description}
                                 onChange={(e) => setDescription(e.target.value)}
                                 // required
-                                className="fieldText"
+                                className="postInput"
                             />
                         </div>
 
@@ -91,7 +106,7 @@ function Upload() {
                                 accept="video/*"
                                 onChange={uploadVideo}
                                 // required
-                                className="fileBtn"
+                                className="postInput"
                             />
                         </div>
                         <button className="updateBtn" type="Submit" disabled={errors.length > 0}>Upload Video</button>
