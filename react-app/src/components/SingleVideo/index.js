@@ -15,6 +15,9 @@ const SingleVideo = () => {
     const history = useHistory()
     const { id } = useParams()
 
+    const [show, setShow] = useState(false)
+    const [showComment, setShowComment] = useState("")
+
     const video = useSelector(state => state.videos[id])
     const comments = useSelector(state => state.comments)
     const commentData = Object.values(comments)
@@ -31,6 +34,11 @@ const SingleVideo = () => {
     //     return null
     // }
 
+    const prop = { setShow, show }
+
+    const commentProp = { setShowComment, showComment }
+
+
     return (
         <>
             {/* VIDEO SECTION */}
@@ -45,12 +53,20 @@ const SingleVideo = () => {
                     <p>{`${video.description}`}</p>
                     {sessionUser.id === video.userId && (
                         <>
+
+                            <button onClick={(e) => {
+                                setShow(!show)
+                            }}>Edit Video's Caption</button>
+
+                            {show &&
+                                <EditVideo newVideo={video} prop={prop} />
+                            }
+
                             <button className="deleteBtn grow" onClick={(e) => {
                                 dispatch(videoActions.removeAVideo(video.id))
                                 // dispatch(videoActions.loadAllVideosThunk(id))
                                 history.push(`/videos`)
                             }}>Delete Video</button>
-                            <EditVideo newVideo={video} />
                         </>
                     )}
                     <PostComment video={video} />
@@ -72,7 +88,16 @@ const SingleVideo = () => {
                         <div>
                             {sessionUser.id === comment.userId && (
                                 <>
-                                    <EditComment newComment={comment} />
+
+                                    <button onClick={(e) => {
+
+                                        setShowComment(showComment == comment?.id ? "" : comment?.id)
+
+                                    }}>Edit Comment</button>
+                                    {showComment == comment.id &&
+                                        <EditComment newComment={comment} commentProp={commentProp} />
+                                    }
+
 
                                     <button className="deleteBtn grow" onClick={(e) => {
                                         dispatch(commentActions.removeAComment(comment.id))

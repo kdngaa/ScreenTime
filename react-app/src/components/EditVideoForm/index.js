@@ -5,7 +5,7 @@ import { useHistory, useParams } from 'react-router-dom';
 import './EditVideo.css'
 
 
-function EditVideo({ newVideo }) {
+function EditVideo({ newVideo, prop }) {
     const dispatch = useDispatch()
     const history = useHistory()
     const { id } = useParams()
@@ -42,6 +42,7 @@ function EditVideo({ newVideo }) {
         const video = { id:newVideo.id, description }
 
         await dispatch(videoActions.editAVideo(video))
+        prop.setShow(false)
 
         // history.push(`/videos/${video.id}`)
         // setContent("")

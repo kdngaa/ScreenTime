@@ -5,14 +5,13 @@ import { useHistory, useParams } from 'react-router-dom';
 import './EditComment.css'
 
 
-function EditComment({ newComment }) {
+function EditComment({ newComment, commentProp }) {
     const dispatch = useDispatch()
     const history = useHistory()
     const { id } = useParams()
 
     const [content, setContent] = useState(newComment.content)
     const [errors, setErrors] = useState([])
-
 
     const sessionUser = useSelector((state) => state.session.user)
 
@@ -43,6 +42,8 @@ function EditComment({ newComment }) {
 
         await dispatch(commentActions.editAComment(comment))
 
+        commentProp.setShowComment("")
+
         // history.push(`/videos/${video.id}`)
         // setContent("")
     }
@@ -64,7 +65,7 @@ function EditComment({ newComment }) {
                     value={content}
                     placeholder='Comment here...'
                 />
-                <button type="submit" className='editBtn' disabled={errors.length > 0}>Edit Comment</button>
+                <button type="submit" className='editBtn' disabled={errors.length > 0}>Update</button>
 
             </form>
         </section>
