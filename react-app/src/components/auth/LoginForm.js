@@ -41,35 +41,57 @@ const LoginForm = () => {
   }
 
   return (
-    <form onSubmit={onLogin} className="loginForm">
-      <div>
-        {errors.map((error, ind) => (
-          <div key={ind}>{error}</div>
-        ))}
-      </div>
-      <div>
-        <label htmlFor='email'>Email</label>
-        <input
-          name='email'
-          type='text'
-          placeholder='Email'
-          value={email}
-          onChange={updateEmail}
-        />
-      </div>
-      <div>
-        <label htmlFor='password'>Password</label>
-        <input
-          name='password'
-          type='password'
-          placeholder='Password'
-          value={password}
-          onChange={updatePassword}
-        />
-        <button type='submit'>Login</button>
-        <button className="demoBtn" onClick={demoUser}>Demo</button>
-      </div>
-    </form>
+    <body className="uploadBody">
+      <section className="containerLogin">
+        <form onSubmit={onLogin} className="uploadVideoForm">
+          <div class="brand-logo"></div>
+          <div className="errors">
+            {errors.map((error, ind) => (
+              <div key={ind}>{error}</div>
+            ))}
+          </div>
+          <div className="uploadInput">
+            {/* <label htmlFor='email'>Email</label> */}
+            <div className="miniDiv">
+              <input
+                name='email'
+                type='text'
+                placeholder='Email'
+                value={email}
+                onChange={updateEmail}
+                className="postInput"
+              />
+            </div>
+
+
+
+            {/* <label htmlFor='password'>Password</label> */}
+            <div className="miniDiv">
+              <input
+                name='password'
+                type='password'
+                placeholder='Password'
+                value={password}
+                onChange={updatePassword}
+                className="postInput"
+              />
+            </div>
+          </div>
+
+          <div className='authBody'>
+            <div class="frame">
+              <p className='btn'>
+                <button type='submit' className='button'>Login</button>
+              </p>
+              <p className='btn'>
+                <button className="button" onClick={demoUser}>Demo</button>
+              </p>
+            </div>
+          </div>
+
+        </form>
+      </section>
+    </body>
   );
 };
 

@@ -50,6 +50,9 @@ const NavBar = () => {
                   Upload
                 </NavLink>
               </p>
+              <p className='logOutBtn'>
+                <LogoutButton />
+              </p>
             </>
           )}
           {/* <li>
@@ -57,9 +60,6 @@ const NavBar = () => {
             Users
           </NavLink>
         </li> */}
-          <p className='logOutBtn'>
-            <LogoutButton />
-          </p>
         </div>
       </nav>
     </div>
