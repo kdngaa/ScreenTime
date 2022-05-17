@@ -1,8 +1,8 @@
 .uploadVideoForm {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
 }
 
 
@@ -10,52 +10,6 @@
 
 
 
-figure {
-    position: absolute;
-    margin: auto;
-    top: 0; bottom: 0; left: 0; right: 0;
-    width: 6.250em; height: 6.250em;
-    animation: rotate 2.4s linear infinite;
-  }
-  .white {
-    top: 0; bottom: 0; left: 0; right: 0;
-    background: white;
-    animation: flash 2.4s linear infinite;
-    opacity: 0;
-  }
-  .dot {
-    position: absolute;
-    margin: auto;
-    width: 2.4em; height: 2.4em;
-    border-radius: 100%;
-    transition: all 1s ease;
-  }
-  .dot:nth-child(2) { top: 0; bottom: 0; left: 0; background: #FF4444; animation: dotsY 2.4s linear infinite; }
-  .dot:nth-child(3) { left: 0; right: 0; top: 0; background: #FFBB33; animation: dotsX 2.4s linear infinite; }
-  .dot:nth-child(4) { top: 0; bottom: 0; right: 0; background: #99CC00; animation: dotsY 2.4s linear infinite; }
-  .dot:nth-child(5) { left: 0; right: 0; bottom: 0; background: #33B5E5; animation: dotsX 2.4s linear infinite; }
-
-  @keyframes rotate {
-    0% { transform: rotate( 0 ); }
-    10% { width: 6.250em; height: 6.250em; }
-    66% { width: 2.4em; height: 2.4em; }
-    100%{ transform: rotate(360deg); width: 6.250em; height: 6.250em; }
-  }
-
-  @keyframes dotsY {
-    66% { opacity: .1; width: 2.4em; }
-    77%{ opacity: 1; width: 0; }
-  }
-  @keyframes dotsX {
-    66% { opacity: .1; height: 2.4em;}
-    77%{ opacity: 1; height: 0; }
-  }
-
-  @keyframes flash {
-    33% { opacity: 0; border-radius: 0%; }
-    55%{ opacity: .6; border-radius: 100%; }
-    66%{ opacity: 0; }
-  }
 
 
 
@@ -65,117 +19,126 @@ figure {
 
 
 
-
-
-.container{
-    position: relative;
-    width: 500px;
-    height: 600px;
-    border-radius: 20px;
-    padding: 40px;
-    box-sizing: border-box;
-    background: #ecf0f3;
-    box-shadow: 14px 14px 20px #cbced1, -14px -14px 20px white;
+.container {
+  position: absolute;
+  width: 500px;
+  height: 600px;
+  border-radius: 20px;
+  padding: 40px;
+  box-sizing: border-box;
+  background: #ecf0f3;
+  box-shadow: 14px 14px 20px #cbced1, -14px -14px 20px white;
 }
 
-.uploadBody{
-    margin: 0;
-    width: 100vw;
-    height: 100vh;
-    background: #ecf0f3;
-    position: fixed;
-    left: 0;
-    display: flex;
-    align-items: center;
-    text-align: center;
-    justify-content: center;
-    place-items: center;
-    overflow: hidden;
-    font-family: poppins;
+.uploadBody {
+  margin: 0;
+  width: 100vw;
+  height: 100vh;
+  background: #ecf0f3;
+  position: fixed;
+  left: 0;
+  display: flex;
+  align-items: center;
+  text-align: center;
+  justify-content: center;
+  place-items: center;
+  overflow: hidden;
+  font-family: poppins;
 }
 
 
 .brand-logo {
-    height: 175px;
-    width: 175px;
-    background: url("https://res.cloudinary.com/dv3gxfdon/image/upload/v1652727815/Screen-time_2_bya8mj.png");
-    margin: auto;
-    border-radius: 50%;
-    box-sizing: border-box;
-    box-shadow: 7px 7px 10px #cbced1, -7px -7px 10px white;
-  }
+  height: 175px;
+  width: 175px;
+  background: url("https://res.cloudinary.com/dv3gxfdon/image/upload/v1652726739/Screen-time_1_oty1tm.png");
+  background-size: 145px 145px;
+  background-position: center;
+  background-repeat: no-repeat;
+  margin: auto;
+  border-radius: 50%;
+  box-sizing: border-box;
+  box-shadow: 7px 7px 10px #cbced1, -7px -7px 10px white;
+}
 
-  .brand-title {
-    margin-top: 10px;
-    font-weight: 900;
-    font-size: 1.8rem;
-    color: #1DA1F2;
-    letter-spacing: 1px;
-  }
-
-
-  .uploadInput{
-    text-align: left;
-    margin-top: 30px;
-  }
-
-  .postInput, .updateBtn {
-    display: block;
-    width: 100%;
-    padding: 0;
-    border: none;
-    outline: none;
-    box-sizing: border-box;
-  }
-
-  label {
-    margin-bottom: 4px;
-    padding-bottom: 5%;
-    font-weight: bolder;
-    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-  }
-
-  label:nth-of-type(2) {
-    margin-top: 12px;
-  }
+.brand-title {
+  margin-top: 10px;
+  font-weight: 900;
+  font-size: 1.8rem;
+  color: #1DA1F2;
+  letter-spacing: 1px;
+}
 
 
-  .postInput::placeholder {
-    color: gray;
-  }
+.uploadInput {
+  text-align: left;
+  margin-top: 30px;
+}
 
-  .postInput {
-    background: #ecf0f3;
-    padding: 10px;
-    padding-left: 20px;
-    height: 50px;
-    font-size: 14px;
-    border-radius: 50px;
-    box-shadow: inset 6px 6px 6px #cbced1, inset -6px -6px 6px white;
-  }
+.postInput,
+.updateBtn {
+  display: block;
+  width: 100%;
+  padding: 0;
+  border: none;
+  outline: none;
+  box-sizing: border-box;
+}
 
-  .updateBtn {
-    color: white;
-    margin-top: 20px;
-    background-color: #5de6de;
-    background-image: linear-gradient(315deg, #5de6de 0%, #b58ecc 74%);;
-    height: 40px;
-    border-radius: 20px;
-    cursor: pointer;
-    font-weight: 900;
-    box-shadow: 6px 6px 6px #cbced1, -6px -6px 6px white;
-    transition: 0.5s;
-  }
+label {
+  margin-bottom: 4px;
+  padding-bottom: 5%;
+  font-weight: bolder;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
 
-  .updateBtn:hover {
-    box-shadow: none;
-  }
+label:nth-of-type(2) {
+  margin-top: 12px;
+}
 
-  .errors{
-      color: red;
-  }
 
-  .miniDiv{
-      padding-bottom: 10%;
-      padding-top: 5%;
-  }
+.postInput::placeholder {
+  color: gray;
+}
+
+.postInput {
+  background: #ecf0f3;
+  padding: 10px;
+  padding-left: 20px;
+  height: 50px;
+  font-size: 14px;
+  border-radius: 50px;
+  box-shadow: inset 6px 6px 6px #cbced1, inset -6px -6px 6px white;
+}
+
+.updateBtn {
+  color: white;
+  margin-top: 20px;
+  background-color: #5de6de;
+  background-image: linear-gradient(315deg, #5de6de 0%, #b58ecc 74%);
+  ;
+  height: 40px;
+  border-radius: 20px;
+  cursor: pointer;
+  font-weight: 900;
+  box-shadow: 6px 6px 6px #cbced1, -6px -6px 6px white;
+  transition: 0.5s;
+}
+
+.updateBtn:hover {
+  box-shadow: none;
+}
+
+.errors {
+  color: red;
+}
+
+.miniDiv {
+  padding-bottom: 10%;
+  padding-top: 5%;
+}
+
+
+.loadingImg {
+  display: inline-block;
+  float: left;
+}
