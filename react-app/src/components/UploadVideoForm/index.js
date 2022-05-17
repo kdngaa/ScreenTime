@@ -109,11 +109,11 @@ function Upload() {
                                 className="postInput"
                             />
                         </div>
-                    </div>
                         <button className="updateBtn" type="Submit" disabled={errors.length > 0}>Upload Video</button>
                         {(videoLoading) &&
                             <img src="https://res.cloudinary.com/dv3gxfdon/image/upload/v1652780250/Tag-For-Moving-Gif-With-Transparent-Background-Loading-Bar-_xkkqi7.gif" className="loadingImg" style={{ width: '250px', height: '250px' }}/>
                         }
+                    </div>
                 </form>
             </section>
         </body>
