@@ -1,72 +1,73 @@
-.authButton{
+.authButton {
     padding-left: 4%;
 }
 
-.authBtn{
+.authBtn {
     text-decoration: none;
     color: white;
     font-weight: bolder;
     font-size: 20px;
-    font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
 }
 
 
 
-.authBtn{
-    background:
-    linear-gradient(
-      to right,
-      rgb(247, 247, 247),
-      rgb(255, 255, 255)
-    ),
-    linear-gradient(
-      to right,
-      rgba(255, 0, 0, 1),
-      rgba(255, 0, 180, 1),
-      rgba(0, 100, 200, 1)
-  );
-  background-size: 100% 3px, 0 3px;
-  background-position: 100% 100%, 0 100%;
-  background-repeat: no-repeat;
-  transition: background-size 400ms;
+.authBtn {
+    color: white;
+    position: relative;
+    text-decoration: none;
 }
 
 
 
-.authBtn:hover{
-    background-size: 0 3px, 100% 3px;
+.authBtn::before {
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 4px;
+    border-radius: 4px;
+    background-color: #00DBDE;
+    background-image: linear-gradient(90deg, #00DBDE 0%, #FC00FF 100%);
+    bottom: 0;
+    left: 0;
+    transform-origin: right;
+    transform: scaleX(0);
+    transition: transform .3s ease-in-out;
 }
 
 
+.authBtn:hover::before {
+    transform-origin: left;
+    transform: scaleX(1);
+}
 
 
-
-.authButtons{
+.authButtons {
     display: flex;
     justify-content: flex-end;
     /* position: absolute;
     right: 0; */
 }
 
-.logOutBtn{
+.logOutBtn {
     padding-left: 4%;
     padding-right: 2%;
 }
 
-.NavBar{
-  background-color: black;
-  top: 0;
-  left: 0;
-  right: 0;
-  position: fixed;
-  z-index: 100;
-  width: 100%;
-  clear: both;
-  height: 60px;
+.NavBar {
+    background-color: black;
+    top: 0;
+    left: 0;
+    right: 0;
+    position: fixed;
+    z-index: 100;
+    width: 100%;
+    clear: both;
+    height: 60px;
 }
 
 
-.logo{
+.logo {
     position: absolute;
     top: 0;
     padding-left: 2%;

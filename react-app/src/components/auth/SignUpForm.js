@@ -5,6 +5,7 @@ import { signUp } from '../../store/session';
 
 const SignUpForm = () => {
   const [errors, setErrors] = useState([]);
+  const [frontErrors, setFrontErrors] = useState([]);
   const [username, setUsername] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
@@ -14,12 +15,26 @@ const SignUpForm = () => {
 
   const onSignUp = async (e) => {
     e.preventDefault();
+    const validateErrors = []
+    if (!username) validateErrors.push("Username is required.")
+    if (!email) validateErrors.push("Email is required.")
+    if (!password) validateErrors.push("Password is required.")
+    if (!repeatPassword) validateErrors.push("Confirmation Password is required.")
+    if (password !== repeatPassword) validateErrors.push("Passwords must match.")
+    if (validateErrors.length > 0) {
+      setFrontErrors(validateErrors)
+      return
+    }
     if (password === repeatPassword) {
       const data = await dispatch(signUp(username, email, password));
       if (data) {
         setErrors(data)
       }
+    } else if (password !== repeatPassword) {
+      return setErrors(['Passwords don\'t match. Please try again'])
     }
+
+    setFrontErrors([])
   };
 
   const updateUsername = (e) => {
@@ -46,6 +61,9 @@ const SignUpForm = () => {
     <form onSubmit={onSignUp} className="signUpForm">
       <div>
         {errors.map((error, ind) => (
+          <div key={ind}>{error}</div>
+        ))}
+        {frontErrors.map((error, ind) => (
           <div key={ind}>{error}</div>
         ))}
       </div>

@@ -43,12 +43,16 @@ const SingleVideo = () => {
                         className="singgleVideo"
                     />
                     <p>{`${video.description}`}</p>
-                    <button className="deleteBtn grow" onClick={(e) => {
-                        dispatch(videoActions.removeAVideo(video.id))
-                        // dispatch(videoActions.loadAllVideosThunk(id))
-                        history.push(`/videos`)
-                    }}>Delete Video</button>
-                    <EditVideo newVideo={video} />
+                    {sessionUser.id === video.userId && (
+                        <>
+                            <button className="deleteBtn grow" onClick={(e) => {
+                                dispatch(videoActions.removeAVideo(video.id))
+                                // dispatch(videoActions.loadAllVideosThunk(id))
+                                history.push(`/videos`)
+                            }}>Delete Video</button>
+                            <EditVideo newVideo={video} />
+                        </>
+                    )}
                     <PostComment video={video} />
                     {sessionUser.id === video.userId}
                 </div>)}

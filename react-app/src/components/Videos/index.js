@@ -19,7 +19,7 @@ const Videos = () => {
 
     return (
         <>
-            <h1 className="allVideosHeader">#trending</h1>
+            <img src="https://res.cloudinary.com/dv3gxfdon/image/upload/v1652768294/5_fmd6yn.png" style={{ width: '350px', height: '70px' }} className="allVideosHeader"/>
             <div className="allVideos">
                 {videoData.map((video, idx) => (
                     <div className="allVidsContainer">
