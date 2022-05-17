@@ -26,6 +26,7 @@ const Videos = () => {
                         <a href={`/videos/${video.id}`} className="vidLink">
                             See More
                         </a>
+                        <p className="commentCreator">{video.user.username} posted:</p>
                             <div className='videoContainer'>
                                 {/* <p>{video?.title}</p> */}
                                 {/* <img src={video?.thumbnail} style={{ height: "200px", width: "300px" }}/> */}

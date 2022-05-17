@@ -66,7 +66,7 @@ const SingleVideo = () => {
                 {commentData.map((comment, idx) => (
                     <div key={comment.id}>
                         <div className="subComment">
-                            {/* <p className="commentCreator">{comment.User.username} said:</p> */}
+                            <p className="commentCreator">{comment.user.username} said:</p>
                             <p key={idx} className="commentContent">{comment.content}</p>
                         </div>
                         <div>

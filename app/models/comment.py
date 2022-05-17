@@ -19,6 +19,7 @@ class Comment(db.Model):
     def to_dict(self):
         return {
             'id': self.id,
+            'user':self.user.to_dict(),
             'videoId': self.videoId,
             'userId': self.userId,
             'content': self.content,

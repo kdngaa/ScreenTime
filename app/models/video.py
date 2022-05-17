@@ -27,6 +27,7 @@ class Video(db.Model):
         return {
             'id': self.id,
             'userId': self.userId,
+            'user':self.user.to_dict(),
             'title': self.title,
             'description': self.description,
             'thumbnail': self.thumbnail,
