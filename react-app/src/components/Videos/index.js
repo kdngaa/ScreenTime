@@ -13,7 +13,6 @@ const Videos = () => {
         await dispatch(videoActions.loadAllVideosThunk())
     }, [dispatch])
 
-
     const videos = useSelector(state => state.videos);
     const videoData = Object.values(videos)
 
@@ -26,11 +25,12 @@ const Videos = () => {
                         <a href={`/videos/${video.id}`} className="vidLink">
                             See More
                         </a>
-                        <p className="contentCreator">{video.user.username} posted:</p>
+                        <p className="contentCreator">@{video.user.username} posted:</p>
+                        <p className="contentCreator">{video?.created_at?.split(" ").slice(0, 4).join(" ")}</p>
                             <div className='videoContainer'>
                                 {/* <p>{video?.title}</p> */}
                                 {/* <img src={video?.thumbnail} style={{ height: "200px", width: "300px" }}/> */}
-                                <ReactPlayer url={`${video?.uploadFile}`} controls width='30%' height='700px' className="oneVideo"/>
+                                <ReactPlayer url={`${video?.uploadFile}`} controls width='17%' height='400px' className="oneVideo"/>
                             </div>
                                 {/* <p className="videoCreator">{video.User.username} posted:</p> */}
                                 <p className="videoDescription">{video?.description}</p>

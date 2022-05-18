@@ -19,7 +19,7 @@
 
 
 
-.container {
+/* .container {
   position: absolute;
   width: 500px;
   height: 600px;
@@ -28,7 +28,7 @@
   box-sizing: border-box;
   background: #ecf0f3;
   box-shadow: 14px 14px 20px #cbced1, -14px -14px 20px white;
-}
+} */
 
 .uploadBody {
   margin: 0;
@@ -43,7 +43,7 @@
   justify-content: center;
   place-items: center;
   overflow: hidden;
-  font-family: poppins;
+  font-family: 'Poppins', sans-serif;
 }
 
 

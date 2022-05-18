@@ -41,11 +41,11 @@ const LoginForm = () => {
   }
 
   return (
-    <body className="uploadBody">
-      <section className="containerLogin">
+    <div className="uploadBody">
+      <h1 className='morphHeaderLogin'>LOGIN</h1>
+      <div className="containerLogin">
         <form onSubmit={onLogin} className="uploadVideoForm">
-          <div class="brand-logo"></div>
-          {/* <h1 className='morphHeader'>LOG IN</h1> */}
+          {/* <div class="brand-logo"></div> */}
           <div className="errors">
             {errors.map((error, ind) => (
               <div key={ind}>{error}</div>
@@ -82,17 +82,17 @@ const LoginForm = () => {
           <div className='authBody'>
             <div class="frame">
               <p className='btn'>
-                <button type='submit' className='button'>Login</button>
+                <button type='submit' className='button'>LOGIN</button>
               </p>
               <p className='btn'>
-                <button className="button" onClick={demoUser}>Demo</button>
+                <button className="button" onClick={demoUser}>DEMO</button>
               </p>
             </div>
           </div>
 
         </form>
-      </section>
-    </body>
+      </div>
+    </div>
   );
 };
 

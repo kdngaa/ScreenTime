@@ -58,10 +58,11 @@ const SignUpForm = () => {
   }
 
   return (
-    <body className="uploadBody">
-      <section className="containerLogin">
+    <div className="uploadBody">
+        <h1 className='morphHeader'>SIGNUP</h1>
+      <div className="containerLogin">
         <form onSubmit={onSignUp} className="signUpForm">
-        <div class="brand-logo"></div>
+        {/* <div class="brand-logo"></div> */}
           <div className="errors">
             {errors.map((error, ind) => (
               <div key={ind}>{error}</div>
@@ -116,7 +117,7 @@ const SignUpForm = () => {
                 name='repeat_password'
                 onChange={updateRepeatPassword}
                 value={repeatPassword}
-                required={true}
+                // required={true}
                 className="postInput"
               ></input>
             </div>
@@ -124,14 +125,14 @@ const SignUpForm = () => {
           <div className='authBody'>
             <div class="frame">
               <p className='btn'>
-                <button type='submit' className="button">Sign Up</button>
+                <button type='submit' className="button">SIGN UP</button>
               </p>
             </div>
           </div>
 
         </form>
-      </section>
-    </body>
+      </div>
+    </div>
   );
 };
 

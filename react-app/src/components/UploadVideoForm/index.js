@@ -3,7 +3,6 @@ import { useDispatch, useSelector } from "react-redux";
 import './UploadVideoForm.css'
 import { postVideo } from "../../store/videos";
 import { useHistory } from "react-router-dom";
-// import { useEffect } from "react/cjs/react.production.min";
 
 function Upload() {
     const dispatch = useDispatch()
@@ -11,57 +10,53 @@ function Upload() {
     const [description, setDescription] = useState("")
     const [uploadFile, setUploadFile] = useState(null)
     const [videoLoading, setVideoLoading] = useState(false);
-
+    const [errorVisible, setErrorVisible] = useState(false)
     const [errors, setErrors] = useState([])
 
     const sessionUser = useSelector((state) => state.session.user)
 
 
 
-    // useEffect(() => {
-    //     const errors = []
+    useEffect(() => {
+        const errorsArr = []
+        const fileType = ["mp4", "3gp", "mov", "m4a", "m4v"];
 
-    //     if (!description) errors.push("Please provide description")
-    //     if (!uploadFile) errors.push("Please use an MP4 file")
+        if (!description) errorsArr.push("Please provide description")
+        if (!uploadFile) errorsArr.push("Can't leave field empty")
+        if (!fileType.includes(uploadFile?.name?.split(".").pop())) {
+            errorsArr.push("Valid file type required");
+        }
 
-    //     setErrors(errors)
-    // }, [description, uploadFile])
+        setErrors(errorsArr)
+    }, [description, uploadFile])
 
 
-    // if (!sessionUser) {  //if user is not log in, form will not show
-    //     return null;
-    // }
+    if (!sessionUser) {  //if user is not log in, form will not show
+        return null;
+    }
 
 
     const handleSubmit = async (e) => {
         e.preventDefault()
 
+        setErrorVisible(true)
 
-        const errors = []
-        const fileType = ["mp4", "3gp", "mov", "m4a", "m4v"];
 
-        if (!description) errors.push("Please provide description")
-        if (!uploadFile) errors.push("Can't leave field empty")
-        if (!fileType.includes(uploadFile?.name?.split(".").pop())) {
-            errors.push("Valid file type required");
-        }
-
-        if (errors.length) {
-            setErrors(errors)
-            return
-        }
-
-        setVideoLoading(true);
         const video = { userId: sessionUser.id, description, uploadFile }
 
-        console.log(video, "<<<<<=========VIDEO")
-        await dispatch(postVideo(video))
 
-        setVideoLoading(false);
 
-        setErrors([])
+        if (errors.length === 0) {
+            setVideoLoading(true);
 
-        history.push(`/videos`) //redirect to home after added
+            await dispatch(postVideo(video))
+
+            setVideoLoading(false);
+
+            history.push(`/videos`) //redirect to home after added
+        }
+
+        setErrorVisible([])
     }
 
 
@@ -77,14 +72,13 @@ function Upload() {
             <section className="container">
                 <form className="uploadVideoForm" onSubmit={handleSubmit}>
                     <div class="brand-logo"></div>
-                    {/* <div class="brand-title">Upload</div> */}
-                    <ul className="errors">
+                    {errorVisible && (<ul className="errors">
                         {errors.map((error, indx) => (
                             <li key={indx}>
                                 {error}
                             </li>
                         ))}
-                    </ul>
+                    </ul>)}
                     <div className="uploadInput">
                         <label >CAPTION</label>
                         <div className="miniDiv">
@@ -113,9 +107,9 @@ function Upload() {
                                 className="postInput"
                             />
                         </div>
-                        <button className="updateBtn" type="Submit" disabled={errors.length > 0}>Upload Video</button>
+                        <button className="updateBtn" type="Submit">Upload Video</button>
                         {(videoLoading) &&
-                            <img src="https://res.cloudinary.com/dv3gxfdon/image/upload/v1652780250/Tag-For-Moving-Gif-With-Transparent-Background-Loading-Bar-_xkkqi7.gif" className="loadingImg" style={{ width: '250px', height: '250px' }}/>
+                            <img src="https://res.cloudinary.com/dv3gxfdon/image/upload/v1652780250/Tag-For-Moving-Gif-With-Transparent-Background-Loading-Bar-_xkkqi7.gif" className="loadingImg" style={{ width: '250px', height: '250px' }} />
                         }
                     </div>
                 </form>
