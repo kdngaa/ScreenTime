@@ -24,13 +24,14 @@ function Upload() {
 
         if (!description) errorsArr.push("Please provide description")
         if (!title) errorsArr.push("Please provide title")
+        if (title.length > 8) errorsArr.push("Please keep title at 8 characters or less")
         if (!uploadFile) errorsArr.push("Can't leave field empty")
         if (!fileType.includes(uploadFile?.name?.split(".").pop())) {
             errorsArr.push("Valid file type required");
         }
 
         setErrors(errorsArr)
-    }, [description, uploadFile])
+    }, [description, uploadFile, title])
 
 
     if (!sessionUser) {  //if user is not log in, form will not show

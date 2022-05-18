@@ -18,24 +18,37 @@ const Videos = () => {
 
     return (
         <>
-            <img src="https://res.cloudinary.com/dv3gxfdon/image/upload/v1652768294/5_fmd6yn.png" style={{ width: '350px', height: '70px' }} className="allVideosHeader"/>
+            <img src="https://res.cloudinary.com/dv3gxfdon/image/upload/v1652768294/5_fmd6yn.png" style={{ width: '350px', height: '70px' }} className="allVideosHeader" />
             <div className="allVideos">
                 {videoData.map((video, idx) => (
+
+
                     <div className="allVidsContainer">
-                        <a href={`/videos/${video.id}`} className="vidLink">
-                            See More
-                        </a>
-                        <p className="videoTitle">{video?.title}</p>
-                        <p className="contentCreator">@{video.user.username} posted:</p>
-                        <p className="contentCreator">{video?.created_at?.split(" ").slice(0, 4).join(" ")}</p>
-                            <div className='videoContainer'>
-                                {/* <p>{video?.title}</p> */}
-                                {/* <img src={video?.thumbnail} style={{ height: "200px", width: "300px" }}/> */}
-                                <ReactPlayer url={`${video?.uploadFile}`} controls width='17%' height='400px' className="oneVideo"/>
+
+
+                        <div>
+                            <div className="createdInfo">
+                                <p className="contentCreator">@{video.user.username} posted:</p>
+                                <p className="dateCreated">{video?.created_at?.split(" ").slice(0, 4).join(" ")}</p>
                             </div>
-                                {/* <p className="videoCreator">{video.User.username} posted:</p> */}
-                                <p className="videoDescription">{video?.description}</p>
+
+                            <div className='videoContainer'>
+
+                                <ReactPlayer url={`${video?.uploadFile}`} controls width='220%' height='600px' className="oneVideo" />
+                            </div>
+                        </div>
+
+
+                        <div className="videoDetails">
+                            <a href={`/videos/${video.id}`} className="vidLink">
+                                <p className="videoTitle">{video?.title}</p>
+                            </a>
+                            <p className="videoDescription">{video?.description}</p>
+                        </div>
+
                     </div>
+
+
                 ))}
             </div>
         </>
