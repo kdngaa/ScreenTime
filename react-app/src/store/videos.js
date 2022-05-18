@@ -80,12 +80,13 @@ export const loadVideoThunk = id => async dispatch => {
 
 // POST A VIDEO
 export const postVideo = (videoId) => async dispatch => {
-  const { userId, uploadFile, description } = videoId
+  const { userId, uploadFile, description, title } = videoId
 
   const formData = new FormData();
 
   formData.append('userId', userId)
   formData.append('description', description)
+  formData.append('title', title)
 
   if (uploadFile) {
     formData.append('uploadFile', uploadFile)

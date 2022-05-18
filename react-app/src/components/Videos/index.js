@@ -25,6 +25,7 @@ const Videos = () => {
                         <a href={`/videos/${video.id}`} className="vidLink">
                             See More
                         </a>
+                        <p className="videoTitle">{video?.title}</p>
                         <p className="contentCreator">@{video.user.username} posted:</p>
                         <p className="contentCreator">{video?.created_at?.split(" ").slice(0, 4).join(" ")}</p>
                             <div className='videoContainer'>

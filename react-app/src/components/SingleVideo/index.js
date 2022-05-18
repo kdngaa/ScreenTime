@@ -44,6 +44,7 @@ const SingleVideo = () => {
             {/* VIDEO SECTION */}
             <div className="singleVideoContainer">
                 {video && (<div className="singleVideo">
+                    <p>{`${video.title}`}</p>
                     <ReactPlayer
                         url={`${video.uploadFile}`}
                         controls
@@ -56,7 +57,7 @@ const SingleVideo = () => {
 
                             <button onClick={(e) => {
                                 setShow(!show)
-                            }}>Edit Video's Caption</button>
+                            }}>Edit Video's Info</button>
 
                             {show &&
                                 <EditVideo newVideo={video} prop={prop} />

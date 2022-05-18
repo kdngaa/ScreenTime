@@ -50,9 +50,11 @@ const NavBar = () => {
                   Upload
                 </NavLink>
               </p>
+
               <p className='logOutBtn'>
                 <LogoutButton />
               </p>
+
             </>
           )}
           {/* <li>

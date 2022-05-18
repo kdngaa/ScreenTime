@@ -118,7 +118,7 @@ def upload_video():
 
     url = upload["url"]
     # flask_login allows us to get the current user from the request
-    new_video = Video(userId=current_user.id, uploadFile=url, description=form.data['description'])
+    new_video = Video(userId=current_user.id, uploadFile=url, description=form.data['description'], title=form.data['title'])
     db.session.add(new_video)
     db.session.commit()
 
@@ -164,7 +164,8 @@ def edit_video(id):
     if form.validate_on_submit():
       data= form.data
       video.description = data['description']
-
+      video.title = data['title']
+      
       db.session.commit()
 
       return jsonify(video.to_dict())

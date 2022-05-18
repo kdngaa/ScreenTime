@@ -8,6 +8,7 @@ function Upload() {
     const dispatch = useDispatch()
     const history = useHistory()
     const [description, setDescription] = useState("")
+    const [title, setTitle] = useState("")
     const [uploadFile, setUploadFile] = useState(null)
     const [videoLoading, setVideoLoading] = useState(false);
     const [errorVisible, setErrorVisible] = useState(false)
@@ -22,6 +23,7 @@ function Upload() {
         const fileType = ["mp4", "3gp", "mov", "m4a", "m4v"];
 
         if (!description) errorsArr.push("Please provide description")
+        if (!title) errorsArr.push("Please provide title")
         if (!uploadFile) errorsArr.push("Can't leave field empty")
         if (!fileType.includes(uploadFile?.name?.split(".").pop())) {
             errorsArr.push("Valid file type required");
@@ -42,7 +44,7 @@ function Upload() {
         setErrorVisible(true)
 
 
-        const video = { userId: sessionUser.id, description, uploadFile }
+        const video = { userId: sessionUser.id, description, uploadFile, title }
 
 
 
@@ -80,6 +82,21 @@ function Upload() {
                         ))}
                     </ul>)}
                     <div className="uploadInput">
+                        <label >TITLE</label>
+                        <div className="miniDiv">
+                            <input
+                                type="text"
+                                placeholder="Title..."
+                                value={title}
+                                onChange={(e) => setTitle(e.target.value)}
+                                // required
+                                className="postInput"
+                            />
+                        </div>
+
+
+
+
                         <label >CAPTION</label>
                         <div className="miniDiv">
                             <input
@@ -91,6 +108,10 @@ function Upload() {
                                 className="postInput"
                             />
                         </div>
+
+
+
+
 
 
                         {/* <label className="fileHead">Please use Cloudinary for your MP3/MP4 files</label> */}
