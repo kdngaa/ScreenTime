@@ -42,6 +42,7 @@ const Videos = () => {
                         <div className="videoDetails">
                             <a href={`/videos/${video.id}`} className="vidLink">
                                 <p className="videoTitle">{video?.title}</p>
+                                {/* <p >Click here to learn more</p> */}
                             </a>
                             <p className="videoDescription">{video?.description}</p>
                         </div>
