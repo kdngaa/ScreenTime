@@ -45,6 +45,7 @@ const LoginForm = () => {
       <section className="containerLogin">
         <form onSubmit={onLogin} className="uploadVideoForm">
           <div class="brand-logo"></div>
+          {/* <h1 className='morphHeader'>LOG IN</h1> */}
           <div className="errors">
             {errors.map((error, ind) => (
               <div key={ind}>{error}</div>

@@ -38,9 +38,13 @@ function Upload() {
 
 
         const errors = []
+        const fileType = ["mp4", "3gp", "mov", "m4a", "m4v"];
 
         if (!description) errors.push("Please provide description")
-        if (!uploadFile) errors.push("Please use an MP4 file")
+        if (!uploadFile) errors.push("Can't leave field empty")
+        if (!fileType.includes(uploadFile?.name?.split(".").pop())) {
+            errors.push("Valid file type required");
+        }
 
         if (errors.length) {
             setErrors(errors)
