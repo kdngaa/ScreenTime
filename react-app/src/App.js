@@ -15,7 +15,7 @@ import Upload from './components/UploadVideoForm';
 import SplashPage from './components/Splash';
 import Footer from './components/Footer';
 import Other from './components/404'
-
+import {UserProfile} from './components/UserProfile'
 
 function App() {
   const [loaded, setLoaded] = useState(false);
@@ -47,6 +47,9 @@ function App() {
         </ProtectedRoute>
         <ProtectedRoute path='/users/:userId' exact={true} >
           <User />
+        </ProtectedRoute>
+        <ProtectedRoute path='/home/:id' exact={true}>
+          <UserProfile />
         </ProtectedRoute>
         <ProtectedRoute path='/videos/new' exact={true} >
           <Upload />
