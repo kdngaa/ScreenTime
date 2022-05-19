@@ -23,6 +23,7 @@ function Upload() {
         const fileType = ["mp4", "3gp", "mov", "m4a", "m4v"];
 
         if (!description) errorsArr.push("Please provide description")
+        if (description.length > 255) errorsArr.push("Please keep description at 255 characters or less")
         if (!title) errorsArr.push("Please provide title")
         if (title.length > 8) errorsArr.push("Please keep title at 8 characters or less")
         if (!uploadFile) errorsArr.push("Can't leave field empty")
