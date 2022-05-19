@@ -118,3 +118,11 @@
   position: fixed;
   top: 15%;
 }
+
+
+.logout{
+  background-color: red;
+  font-weight: bolder;
+  font-size: 15px;
+  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
