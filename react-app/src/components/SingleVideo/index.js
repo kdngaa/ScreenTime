@@ -41,74 +41,92 @@ const SingleVideo = () => {
 
     return (
         <>
-            {/* VIDEO SECTION */}
-            <div className="singleVideoContainer">
-                {video && (<div className="singleVideo">
-                    <p>{`${video.title}`}</p>
-                    <ReactPlayer
-                        url={`${video.uploadFile}`}
-                        controls
-                        width='60%' height='500px'
-                        className="singgleVideo"
-                    />
-                    <p>{`${video.description}`}</p>
-                    {sessionUser.id === video.userId && (
-                        <>
+            <div className="singleBox">
+                {/* VIDEO SECTION */}
+                <div className="singleVideoContainer">
+                    {video && (<div className="singleVideo">
+                        <p className="singleVidTitle">{`${video.title}`}</p>
+                        <ReactPlayer
+                            url={`${video.uploadFile}`}
+                            controls
+                            width='80%' height='700px'
+                            className="singgleVideo"
+                        />
+                        <p className="descriptionContent">{`${video.description}`}</p>
+                        {sessionUser.id === video.userId && (
+                            <>
 
-                            <button onClick={(e) => {
-                                setShow(!show)
-                            }}>Edit Video's Info</button>
+                                <button onClick={(e) => {
+                                    setShow(!show)
+                                }}>
+                                    <img src="https://res.cloudinary.com/dv3gxfdon/image/upload/v1652926986/edit-button-1551_npwjzv.png" style={{ width: '30px', height: '30px' }} />
 
-                            {show &&
-                                <EditVideo newVideo={video} prop={prop} />
-                            }
+                                </button>
 
-                            <button className="deleteBtn grow" onClick={(e) => {
-                                dispatch(videoActions.removeAVideo(video.id))
-                                // dispatch(videoActions.loadAllVideosThunk(id))
-                                history.push(`/videos`)
-                            }}>Delete Video</button>
-                        </>
-                    )}
-                    <PostComment video={video} />
-                    {sessionUser.id === video.userId}
-                </div>)}
-            </div>
+                                {show &&
+                                    <EditVideo newVideo={video} prop={prop} />
+                                }
 
+                                <button className="deleteBtn grow" onClick={(e) => {
+                                    dispatch(videoActions.removeAVideo(video.id))
+                                    // dispatch(videoActions.loadAllVideosThunk(id))
+                                    history.push(`/videos`)
+                                }}>
 
-            {/* COMMENT SECTION */}
+                                    <img src="https://res.cloudinary.com/dv3gxfdon/image/upload/v1652926984/Icon-Trash-Can-clipart-transparent_cuo1l1.png" style={{ width: '30px', height: '30px' }} />
 
-            <div className="commentSection">
-                <h2>COMMENT SECTION</h2>
-                {commentData.map((comment, idx) => (
-                    <div key={comment.id}>
-                        <div className="subComment">
-                            <p className="commentCreator">{comment.user.username} said:</p>
-                            <p key={idx} className="commentContent">{comment.content}</p>
+                                </button>
+                            </>
+                        )}
+                        <div className="chatbox">
+                            <PostComment video={video} />
                         </div>
-                        <div>
-                            {sessionUser.id === comment.userId && (
-                                <>
-
-                                    <button onClick={(e) => {
-
-                                        setShowComment(showComment == comment?.id ? "" : comment?.id)
-
-                                    }}>Edit Comment</button>
-                                    {showComment == comment.id &&
-                                        <EditComment newComment={comment} commentProp={commentProp} />
-                                    }
+                        {sessionUser.id === video.userId}
+                    </div>)}
+                </div>
 
 
-                                    <button className="deleteBtn grow" onClick={(e) => {
-                                        dispatch(commentActions.removeAComment(comment.id))
-                                        dispatch(commentActions.loadComments(id))
-                                    }}>Remove Comment</button>
-                                </>
-                            )}
+                {/* COMMENT SECTION */}
+
+                <div className="commentSection">
+                    <h2>COMMENT SECTION</h2>
+                    {commentData.map((comment, idx) => (
+                        <div key={comment.id}>
+                            <div className="subComment">
+                                <p className="commentCreator">{comment.user.username} said:</p>
+                                <p key={idx} className="commentContent">{comment.content}</p>
+                            </div>
+                            <div>
+                                {sessionUser.id === comment.userId && (
+                                    <>
+
+                                        <button onClick={(e) => {
+
+                                            setShowComment(showComment == comment?.id ? "" : comment?.id)
+
+                                        }}>
+
+                                            <img src="https://res.cloudinary.com/dv3gxfdon/image/upload/v1652926986/edit-button-1551_npwjzv.png" style={{ width: '15px', height: '15px' }} />
+                                        </button>
+
+                                        {showComment == comment.id &&
+                                            <EditComment newComment={comment} commentProp={commentProp} />
+                                        }
+
+
+                                        <button className="deleteBtn grow" onClick={(e) => {
+                                            dispatch(commentActions.removeAComment(comment.id))
+                                            dispatch(commentActions.loadComments(id))
+                                        }}>
+
+                                            <img src="https://res.cloudinary.com/dv3gxfdon/image/upload/v1652926984/Icon-Trash-Can-clipart-transparent_cuo1l1.png" style={{ width: '15px', height: '15px' }} />
+                                        </button>
+                                    </>
+                                )}
+                            </div>
                         </div>
-                    </div>
-                ))}
+                    ))}
+                </div>
             </div>
         </>
     )

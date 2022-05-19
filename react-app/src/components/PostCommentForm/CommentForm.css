@@ -1,9 +1,35 @@
 .commentBox{
-    width: 820px;
-    height: 50px;
+    width: 760px;
+    height: 25px;
 }
 
 .commentBtn{
-    height: 50px;
+    height: 25px;
     border-radius: 10px;
+}
+
+
+.commentContent{
+    text-decoration: none;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 100px;
+    font-size: 15px;
+    width: 550px;
+    height: 20px;
+    word-wrap: break-word;
+}
+
+
+.descriptionContent{
+    text-decoration: none;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 100px;
+    font-size: 20px;
+    width: 1200px;
+    height: 100px;
+    word-wrap: break-word;
+}
+
+.commentSection{
+    padding-bottom: 7%;
 }

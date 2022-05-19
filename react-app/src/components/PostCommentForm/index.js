@@ -65,7 +65,7 @@ function PostComment({ video }) {
                     placeholder='Comment here...'
                     className="commentBox"
                 />
-                <button type="submit" className='commentBtn' disabled={errors.length > 0}>Submit Comment</button>
+                <button type="submit" className='commentBtn' disabled={errors.length > 0}>Post</button>
 
             </form>
         </section>
