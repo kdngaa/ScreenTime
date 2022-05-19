@@ -64,6 +64,7 @@ function EditComment({ newComment, commentProp }) {
                     name="content"
                     onChange={(e) => setContent(e.target.value)}
                     value={content}
+                    maxLength="256"
                     placeholder='Comment here...'
                 />
                 <button type="submit" className='editBtn' disabled={errors.length > 0}>Update</button>

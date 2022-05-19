@@ -17,6 +17,7 @@ const SignUpForm = () => {
     e.preventDefault();
     const validateErrors = []
     if (!username) validateErrors.push("Username is required.")
+    if (username.length < 3) validateErrors.push("Username needs to be 3 or more characters.")
     if (!email) validateErrors.push("Email is required.")
     if (!password) validateErrors.push("Password is required.")
     if (!repeatPassword) validateErrors.push("Confirmation Password is required.")

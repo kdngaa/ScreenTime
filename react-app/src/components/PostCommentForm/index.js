@@ -64,6 +64,7 @@ function PostComment({ video }) {
                     name="content"
                     onChange={(e) => setContent(e.target.value)}
                     value={content}
+                    maxLength="256"
                     placeholder='Comment here...'
                     className="commentBox"
                 />

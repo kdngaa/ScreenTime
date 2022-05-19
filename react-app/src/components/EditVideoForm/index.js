@@ -79,6 +79,7 @@ function EditVideo({ newVideo, prop }) {
                         name="description"
                         onChange={(e) => setDescription(e.target.value)}
                         value={description}
+                        maxLength="256"
                         placeholder='New description here...'
                         className="editDesc"
                     />

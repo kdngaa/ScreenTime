@@ -106,6 +106,7 @@ function Upload() {
                                 placeholder="Type here..."
                                 value={description}
                                 onChange={(e) => setDescription(e.target.value)}
+                                maxLength="256"
                                 // required
                                 className="captionInput"
                             />
