@@ -26,6 +26,8 @@ function PostComment({ video }) {
         const errors = []
 
         if (!content) errors.push("Please provide comment")
+        if (content.length > 255) errors.push("Please keep content under 255 characters")
+
 
         setErrors(errors)
     }, [content])
