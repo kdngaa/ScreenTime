@@ -59,7 +59,7 @@ function PostComment({ video }) {
                         </li>
                     ))} */}
                 </ul>
-                <input
+                <textarea
                     type="text"
                     name="content"
                     onChange={(e) => setContent(e.target.value)}

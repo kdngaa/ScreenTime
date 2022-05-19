@@ -8,6 +8,8 @@ import './SingleVideo.css'
 import PostComment from "../PostCommentForm";
 import EditComment from "../EditCommentForm";
 import EditVideo from "../EditVideoForm";
+// import Popup from 'reactjs-popup';
+// import 'reactjs-popup/dist/index.css';
 
 
 const SingleVideo = () => {
@@ -63,9 +65,13 @@ const SingleVideo = () => {
 
                                 </button>
 
+
                                 {show &&
                                     <EditVideo newVideo={video} prop={prop} />
                                 }
+
+
+
 
                                 <button className="deleteBtn grow" onClick={(e) => {
                                     dispatch(videoActions.removeAVideo(video.id))
@@ -76,6 +82,8 @@ const SingleVideo = () => {
                                     <img src="https://res.cloudinary.com/dv3gxfdon/image/upload/v1652926984/Icon-Trash-Can-clipart-transparent_cuo1l1.png" style={{ width: '30px', height: '30px' }} />
 
                                 </button>
+
+
                             </>
                         )}
                         <div className="chatbox">

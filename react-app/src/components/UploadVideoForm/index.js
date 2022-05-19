@@ -101,13 +101,13 @@ function Upload() {
 
                         <label >CAPTION</label>
                         <div className="miniDiv">
-                            <input
+                            <textarea
                                 type="text"
                                 placeholder="Type here..."
                                 value={description}
                                 onChange={(e) => setDescription(e.target.value)}
                                 // required
-                                className="postInput"
+                                className="captionInput"
                             />
                         </div>
 

@@ -59,7 +59,7 @@ function EditComment({ newComment, commentProp }) {
                         </li>
                     ))}
                 </ul>
-                <input
+                <textarea
                     type="text"
                     name="content"
                     onChange={(e) => setContent(e.target.value)}

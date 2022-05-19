@@ -74,12 +74,13 @@ function EditVideo({ newVideo, prop }) {
                 </div>
                 <div>
                     <label>Description</label>
-                    <input
+                    <textarea
                         type="text"
                         name="description"
                         onChange={(e) => setDescription(e.target.value)}
                         value={description}
                         placeholder='New description here...'
+                        className="editDesc"
                     />
                 </div>
 
