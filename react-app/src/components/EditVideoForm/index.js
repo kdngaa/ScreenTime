@@ -28,6 +28,7 @@ function EditVideo({ newVideo, prop }) {
         if (!description) errors.push("Please provide video description")
         if (!title) errors.push("Please provide video title")
         if (title.length > 8) errors.push("Please keep title at 8 characters or less")
+        if (description.length > 255) errors.push("Please keep description under 255 characters")
 
         setErrors(errors)
     }, [description, title])

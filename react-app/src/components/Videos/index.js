@@ -33,8 +33,9 @@ const Videos = () => {
                             </div>
 
                             <div className='videoContainer'>
-
-                                <ReactPlayer url={`${video?.uploadFile}`} controls width='220%' height='600px' className="oneVideo" />
+                                <a href={`/videos/${video.id}`} className="vidLinkVideo">
+                                    <ReactPlayer url={`${video?.uploadFile}`} controls width='110%' height='615px' className="oneVideo" />
+                                </a>
                             </div>
                         </div>
 
@@ -42,7 +43,6 @@ const Videos = () => {
                         <div className="videoDetails">
                             <a href={`/videos/${video.id}`} className="vidLink">
                                 <p className="videoTitle">{video?.title}</p>
-                                {/* <p >Click here to learn more</p> */}
                             </a>
                             <p className="videoDescription">{video?.description}</p>
                         </div>
