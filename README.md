@@ -1,7 +1,6 @@
-# Screen-Time App (TikTok/YouTube clone)
+# Welcome to ScreenTime!
 
-This is the starter for the Flask React project.
-
+ScreenTime is a clone of YouTube/TikTok, a popular video-sharing app that allows users to create and share 15-60 seconds videos, on any genre. Content creators hold the power and freedom to showcase as they pleased.
 
 ## Live Site Link
 [ScreenTime](https://screentime-aa.herokuapp.com/)
