@@ -19,11 +19,11 @@ const Footer = () => {
                             <img src="https://res.cloudinary.com/dv3gxfdon/image/upload/v1652609758/128-1280464_github-icon-download-at-icons8-github-icon-white-removebg-preview_qqz2dz.png" style={{ width: '40px', height: '40px' }} />
                         </a>
                     </p>
-                    <p className="info">
+                    {/* <p className="info">
                         <a href="https://www.apple.com/app-store/">
                             <img src="https://res.cloudinary.com/dv3gxfdon/image/upload/v1652610508/24-246862_weve-got-you-covered-app-store-logo-white_oxx264.png" style={{ width: '130px', height: '35px' }} />
                         </a>
-                    </p>
+                    </p> */}
                 </div>
             </div>
         </footer>
