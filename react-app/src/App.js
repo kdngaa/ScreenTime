@@ -14,13 +14,15 @@ import SingleVideo from './components/SingleVideo';
 import Upload from './components/UploadVideoForm';
 import SplashPage from './components/Splash';
 import Footer from './components/Footer';
+import Other from './components/404'
+
 
 function App() {
   const [loaded, setLoaded] = useState(false);
   const dispatch = useDispatch();
 
   useEffect(() => {
-    (async() => {
+    (async () => {
       await dispatch(authenticate());
       setLoaded(true);
     })();
@@ -41,7 +43,7 @@ function App() {
           <SignUpForm />
         </Route>
         <ProtectedRoute path='/users' exact={true} >
-          <UsersList/>
+          <UsersList />
         </ProtectedRoute>
         <ProtectedRoute path='/users/:userId' exact={true} >
           <User />
@@ -56,8 +58,11 @@ function App() {
           <Videos />
         </ProtectedRoute>
         <ProtectedRoute path='/' exact={true} >
-          <SplashPage/>
+          <SplashPage />
         </ProtectedRoute>
+        <Route>
+          <Other />
+        </Route>
       </Switch>
       <Footer />
     </BrowserRouter>

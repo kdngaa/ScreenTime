@@ -47,13 +47,13 @@ const SingleVideo = () => {
                 {/* VIDEO SECTION */}
                 <div className="singleVideoContainer">
                     {video && (<div className="singleVideo">
-                        <p className="singleVidTitle">{`${video.title}`}</p>
                         <ReactPlayer
                             url={`${video.uploadFile}`}
                             controls
                             width='80%' height='700px'
                             className="singgleVideo"
                         />
+                        <p className="singleVidTitle">{`${video.title}`}</p>
                         <p className="descriptionContent">{`${video.description}`}</p>
                         {sessionUser.id === video.userId && (
                             <>
