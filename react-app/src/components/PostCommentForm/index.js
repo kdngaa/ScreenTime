@@ -10,10 +10,10 @@ function PostComment({ video }) {
     const dispatch = useDispatch()
     const history = useHistory()
     const { id } = useParams()
-    console.log(id, "THIS IS AN ID ===>")
+
     const [content, setContent] = useState("")
     const [errors, setErrors] = useState([])
-
+    const [errorVisible, setErrorVisible] = useState(false)
 
     const sessionUser = useSelector((state) => state.session.user)
 
@@ -23,13 +23,13 @@ function PostComment({ video }) {
 
 
     useEffect(() => {
-        const errors = []
+        const errorsArr = []
 
-        if (!content) errors.push("Please provide comment")
-        if (content.length > 255) errors.push("Please keep content under 255 characters")
+        if (!content) errorsArr.push("Please provide comment")
+        if (content.length > 255) errorsArr.push("Please keep content under 255 characters")
 
 
-        setErrors(errors)
+        setErrors(errorsArr)
     }, [content])
 
 
@@ -41,24 +41,33 @@ function PostComment({ video }) {
     const handleSubmit = async (e) => {
         e.preventDefault()
 
+        setErrorVisible(true)
+
         const comment = { content, videoId:id, userId: sessionUser.id }
+
+
+        if (errors.length === 0) {
+
 
         await dispatch(commentActions.postComment(comment, id))
 
-        // history.push(`/videos/${video.id}`)
         setContent("")
+        }
+        // history.push(`/videos/${video.id}`)
+
+        setErrorVisible([])
     }
 
     return (
         <section>
             <form onSubmit={handleSubmit}>
-                <ul className="errors">
-                    {errors.map((error, indx) => (
-                        <li key={indx}>
-                            {error}
-                        </li>
-                    ))}
-                </ul>
+            {errorVisible && (<ul className="errors">
+                        {errors.map((error, indx) => (
+                            <li key={indx}>
+                                {error}
+                            </li>
+                        ))}
+                    </ul>)}
                 <textarea
                     type="text"
                     name="content"
@@ -68,7 +77,7 @@ function PostComment({ video }) {
                     placeholder='Comment here...'
                     className="commentBox"
                 />
-                <button type="submit" className='commentBtn' disabled={errors.length > 0}>Post</button>
+                <button type="submit" className='commentBtn'>Post</button>
 
             </form>
         </section>

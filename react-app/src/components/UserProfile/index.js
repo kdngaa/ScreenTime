@@ -35,11 +35,11 @@ export const UserProfile = () => {
                 <h1>Welcome {sessionUser.username}</h1>
                 <h2>My Videos</h2>
                 <div className="vidList">
-                    {myUploads.map((upload, idx) => (
-                        <p href={`/videos/${upload.id}`}>
+                    {myUploads.reverse().map((upload, idx) => (
+                        <a href={`/videos/${upload.id}`}>
                             {/* <li key={idx} className='linkText'>{upload.title}</li> */}
-                            <ReactPlayer url={`${upload?.uploadFile}`} controls width='15%' height='460px' className="oneVideo" />
-                        </p>
+                            <ReactPlayer url={`${upload?.uploadFile}`} controls width='65%' height='460px' className="oneVideo" />
+                        </a>
                     ))}
                 </div>
             </div>
