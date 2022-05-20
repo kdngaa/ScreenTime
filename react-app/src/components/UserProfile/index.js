@@ -32,18 +32,19 @@ export const UserProfile = () => {
     return (
         <>
             <div className="uploads">
-                <h1>Welcome {sessionUser.username}</h1>
-                <h2>My Videos</h2>
+                <h1 className="userHeader">Welcome, {sessionUser.username}</h1>
+                <h2 className="userSubHeader">My Videos</h2>
                 <div className="vidList">
                     {myUploads.reverse().map((upload, idx) => (
-                        <a href={`/videos/${upload.id}`}>
-                            {/* <li key={idx} className='linkText'>{upload.title}</li> */}
-                            <ReactPlayer url={`${upload?.uploadFile}`} controls width='65%' height='460px' className="oneVideo" />
-                        </a>
+                        <>
+                            <a href={`/videos/${upload.id}`}>
+                                <p key={idx} className='linkTextProf'>{upload.title}</p>
+                                <p> <ReactPlayer url={`${upload?.uploadFile}`} controls width='65%' height='460px' className="oneVideo" /></p>
+                            </a>
+                        </>
                     ))}
                 </div>
             </div>
-
         </>
     )
 }

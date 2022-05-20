@@ -55,7 +55,7 @@ const NavBar = () => {
 
               <p className='authButton'>
                 <NavLink to={`/home/${user?.id}`} exact={true} activeClassName='active' className='authBtn'>
-                  Profile
+                  My Profile
                 </NavLink>
               </p>
 
