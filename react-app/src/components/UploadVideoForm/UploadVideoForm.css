@@ -130,6 +130,7 @@ label:nth-of-type(2) {
 
 .errors {
   color: red;
+  overflow: auto;
 }
 
 .miniDiv {

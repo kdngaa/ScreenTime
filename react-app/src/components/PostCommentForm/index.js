@@ -13,6 +13,7 @@ function PostComment({ video }) {
 
     const [content, setContent] = useState("")
     const [errors, setErrors] = useState([])
+
     const [errorVisible, setErrorVisible] = useState(false)
 
     const sessionUser = useSelector((state) => state.session.user)
@@ -52,22 +53,25 @@ function PostComment({ video }) {
         await dispatch(commentActions.postComment(comment, id))
 
         setContent("")
+        setErrors([])
+        setErrorVisible(false)
         }
         // history.push(`/videos/${video.id}`)
 
-        setErrorVisible([])
     }
 
     return (
         <section>
             <form onSubmit={handleSubmit}>
-            {errorVisible && (<ul className="errors">
+            <div className="errors">
+            {errorVisible && (<ul>
                         {errors.map((error, indx) => (
                             <li key={indx}>
                                 {error}
                             </li>
                         ))}
                     </ul>)}
+                    </div>
                 <textarea
                     type="text"
                     name="content"

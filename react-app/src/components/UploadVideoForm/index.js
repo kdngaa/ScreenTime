@@ -76,13 +76,15 @@ function Upload() {
             <section className="container">
                 <form className="uploadVideoForm" onSubmit={handleSubmit}>
                     <div class="brand-logo"></div>
-                    {errorVisible && (<ul className="errors">
+                    <div className="errors">
+                    {errorVisible && (<ul>
                         {errors.map((error, indx) => (
                             <li key={indx}>
                                 {error}
                             </li>
                         ))}
                     </ul>)}
+                    </div>
                     <div className="uploadInput">
                         <label >TITLE</label>
                         <div className="miniDiv">
