@@ -45,9 +45,17 @@ const NavBar = () => {
                   Videos
                 </NavLink>
               </p>
+
+
               <p className='authButton'>
                 <NavLink to='/videos/new' exact={true} activeClassName='active' className='authBtn'>
                   Upload
+                </NavLink>
+              </p>
+
+              <p className='authButton'>
+                <NavLink to={`/home/${user?.id}`} exact={true} activeClassName='active' className='authBtn'>
+                  Profile
                 </NavLink>
               </p>
 
