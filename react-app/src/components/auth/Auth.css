@@ -114,10 +114,26 @@
   text-shadow: 4px -4px 8px #cbced1,
     -4px 4px 8px white;
   font-family: "Poppins", sans-serif;
-  font-size: 110px;
-  position: fixed;
+  font-size: 80px;
+  font-weight: 900;
   top: 15%;
 }
+
+
+
+.morphHeaderSignUp {
+  color: #ecf0f3;
+  text-shadow: 4px -4px 8px #cbced1,
+    -4px 4px 8px white;
+  font-family: "Poppins", sans-serif;
+  font-size: 80px;
+  font-weight: 900;
+  top: 15%;
+}
+
+
+
+
 
 
 .logout{

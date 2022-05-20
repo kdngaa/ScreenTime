@@ -60,9 +60,9 @@ const SignUpForm = () => {
 
   return (
     <div className="uploadBody">
-        <h1 className='morphHeader'>SIGNUP</h1>
       <div className="containerLogin">
         <form onSubmit={onSignUp} className="signUpForm">
+        <div className='morphHeaderSignUp'>SIGNUP</div>
         {/* <div class="brand-logo"></div> */}
           <div className="errors">
             {errors.map((error, ind) => (

@@ -77,13 +77,13 @@ function Upload() {
                 <form className="uploadVideoForm" onSubmit={handleSubmit}>
                     <div class="brand-logo"></div>
                     <div className="errors">
-                    {errorVisible && (<ul>
-                        {errors.map((error, indx) => (
-                            <li key={indx}>
-                                {error}
-                            </li>
-                        ))}
-                    </ul>)}
+                        {errorVisible && (<ul>
+                            {errors.map((error, indx) => (
+                                <li key={indx}>
+                                    {error}
+                                </li>
+                            ))}
+                        </ul>)}
                     </div>
                     <div className="uploadInput">
                         <label >TITLE</label>

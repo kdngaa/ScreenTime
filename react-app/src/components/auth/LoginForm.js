@@ -42,10 +42,12 @@ const LoginForm = () => {
 
   return (
     <div className="uploadBody">
-      <h1 className='morphHeaderLogin'>LOGIN</h1>
+
       <div className="containerLogin">
+
         <form onSubmit={onLogin} className="uploadVideoForm">
           {/* <div class="brand-logo"></div> */}
+      <div className='morphHeaderLogin'>LOGIN</div>
           <div className="errors">
             {errors.map((error, ind) => (
               <div key={ind}>{error}</div>
