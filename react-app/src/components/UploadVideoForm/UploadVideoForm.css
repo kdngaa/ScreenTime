@@ -35,29 +35,30 @@
   width: 100vw;
   height: 100vh;
   background: #ecf0f3;
-  position: fixed;
+  /* position: fixed; */
   left: 0;
   display: flex;
   align-items: center;
   text-align: center;
   justify-content: center;
   place-items: center;
-  overflow: hidden;
+  overflow: scroll;
   font-family: 'Poppins', sans-serif;
 }
 
 
 .brand-logo {
-  height: 175px;
-  width: 175px;
+  height: 135px;
+  width: 135px;
   background: url("https://res.cloudinary.com/dv3gxfdon/image/upload/v1652726739/Screen-time_1_oty1tm.png");
-  background-size: 145px 145px;
+  background-size: 115px 115px;
   background-position: center;
   background-repeat: no-repeat;
   margin: auto;
   border-radius: 50%;
   box-sizing: border-box;
   box-shadow: 7px 7px 10px #cbced1, -7px -7px 10px white;
+  display: flex;
 }
 
 .brand-title {
@@ -104,7 +105,7 @@ label:nth-of-type(2) {
   background: #ecf0f3;
   padding: 10px;
   padding-left: 20px;
-  height: 50px;
+  height: 30px;
   font-size: 14px;
   border-radius: 50px;
   box-shadow: inset 6px 6px 6px #cbced1, inset -6px -6px 6px white;
@@ -130,11 +131,12 @@ label:nth-of-type(2) {
 
 .errors {
   color: red;
+  overflow: auto;
 }
 
 .miniDiv {
   padding-bottom: 10%;
-  padding-top: 5%;
+  padding-top: 1%;
 }
 
 
@@ -153,7 +155,7 @@ label:nth-of-type(2) {
   background: #ecf0f3;
   padding: 10px;
   padding-left: 20px;
-  height: 130px;
+  height: 60px;
   font-size: 14px;
   /* border-radius: 50px; */
   box-shadow: inset 6px 6px 6px #cbced1, inset -6px -6px 6px white;

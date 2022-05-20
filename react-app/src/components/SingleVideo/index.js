@@ -50,8 +50,8 @@ const SingleVideo = () => {
                         <ReactPlayer
                             url={`${video.uploadFile}`}
                             controls
-                            width='80%' height='700px'
-                            className="singgleVideo"
+                            width='60%' height='550px'
+                            className="singleVideo"
                         />
                         <p className="singleVidTitle">{`${video.title}`}</p>
                         <p className="descriptionContent">{`${video.description}`}</p>

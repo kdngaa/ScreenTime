@@ -55,13 +55,15 @@ function EditVideo({ newVideo, prop }) {
     return (
         <section>
             <form onSubmit={handleSubmit}>
-                <ul className="errors">
+                <div className="errors">
+                <ul>
                     {errors.map((error, indx) => (
                         <li key={indx}>
                             {error}
                         </li>
                     ))}
                 </ul>
+                </div>
                 <div>
                     <label>Title</label>
                     <input

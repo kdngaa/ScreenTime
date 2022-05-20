@@ -1,21 +1,19 @@
-.singleVideo{
-    padding-left: 5%;
-}
 
 
-.commentSection{
+
+/* .commentSection{
     padding-left: 5%;
-}
+} */
 
 .singleVideoContainer{
     padding-top: 2%;
 }
 
 
-/* .singleBox{
-    display: flex;
-    flex-direction: row;
-} */
+.singleBox{
+    padding-left: 5%;
+    padding-top: 3%;
+}
 
 
 .singleVidTitle{

@@ -27,6 +27,10 @@ function Upload() {
         if (!title) errorsArr.push("Please provide title")
         if (title.length > 8) errorsArr.push("Please keep title at 8 characters or less")
         if (!uploadFile) errorsArr.push("Can't leave field empty")
+        if (uploadFile?.size > 10000000) {
+            errorsArr.push("File must be less than 10MB");
+        }
+
         if (!fileType.includes(uploadFile?.name?.split(".").pop())) {
             errorsArr.push("Valid file type required");
         }
@@ -76,13 +80,15 @@ function Upload() {
             <section className="container">
                 <form className="uploadVideoForm" onSubmit={handleSubmit}>
                     <div class="brand-logo"></div>
-                    {errorVisible && (<ul className="errors">
-                        {errors.map((error, indx) => (
-                            <li key={indx}>
-                                {error}
-                            </li>
-                        ))}
-                    </ul>)}
+                    <div className="errors">
+                        {errorVisible && (<ul>
+                            {errors.map((error, indx) => (
+                                <li key={indx}>
+                                    {error}
+                                </li>
+                            ))}
+                        </ul>)}
+                    </div>
                     <div className="uploadInput">
                         <label >TITLE</label>
                         <div className="miniDiv">

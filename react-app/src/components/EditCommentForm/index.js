@@ -52,13 +52,15 @@ function EditComment({ newComment, commentProp }) {
     return (
         <section>
             <form onSubmit={handleSubmit}>
-                <ul className="errors">
+                <div className="errors">
+                <ul>
                     {errors.map((error, indx) => (
                         <li key={indx}>
                             {error}
                         </li>
                     ))}
                 </ul>
+                </div>
                 <textarea
                     type="text"
                     name="content"
