@@ -53,11 +53,11 @@ function PostComment({ video }) {
         <section>
             <form onSubmit={handleSubmit}>
                 <ul className="errors">
-                    {/* {errors.map((error, indx) => (
+                    {errors.map((error, indx) => (
                         <li key={indx}>
                             {error}
                         </li>
-                    ))} */}
+                    ))}
                 </ul>
                 <textarea
                     type="text"
