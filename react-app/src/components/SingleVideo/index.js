@@ -53,8 +53,6 @@ const SingleVideo = () => {
                             width='60%' height='550px'
                             className="singleVideo"
                         />
-                        <p className="singleVidTitle">{`${video.title}`}</p>
-                        <p className="descriptionContent">{`${video.description}`}</p>
                         {sessionUser.id === video.userId && (
                             <>
 
@@ -83,6 +81,8 @@ const SingleVideo = () => {
 
                                 </button>
 
+                                <p className="singleVidTitle">{`${video.title}`}</p>
+                                <p className="descriptionContent">{`${video.description}`}</p>
 
                             </>
                         )}
