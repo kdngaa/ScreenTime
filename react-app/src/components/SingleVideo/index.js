@@ -81,11 +81,11 @@ const SingleVideo = () => {
 
                                 </button>
 
-                                <p className="singleVidTitle">{`${video.title}`}</p>
-                                <p className="descriptionContent">{`${video.description}`}</p>
 
                             </>
                         )}
+                        <p className="singleVidTitle">{`${video.title}`}</p>
+                        <p className="descriptionContent">{`${video.description}`}</p>
                         <div className="chatbox">
                             <PostComment video={video} />
                         </div>
