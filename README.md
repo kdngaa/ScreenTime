@@ -11,8 +11,8 @@ ScreenTime is a clone of YouTube/TikTok, a popular video-sharing app that allows
 - ![NodeJS](https://img.shields.io/badge/node.js-6DA55F?style=for-the-badge&logo=node.js&logoColor=white)
 - ![Redux](https://img.shields.io/badge/redux-%23593d88.svg?style=for-the-badge&logo=redux&logoColor=white)
 - ![JavaScript](https://img.shields.io/badge/javascript-%23323330.svg?style=for-the-badge&logo=javascript&logoColor=%23F7DF1E)
-- HTML
-- CSS
+- ![HTML](https://img.shields.io/badge/HTML-239120?style=for-the-badge&logo=html5&logoColor=white)
+- ![CSS](https://img.shields.io/badge/CSS-239120?&style=for-the-badge&logo=css3&logoColor=white)
 
 ### Back-End
 - ![Python](https://img.shields.io/badge/python-3670A0?style=for-the-badge&logo=python&logoColor=ffdd54)
@@ -33,9 +33,11 @@ ScreenTime is a clone of YouTube/TikTok, a popular video-sharing app that allows
 6) To run the React App in development, checkout the README inside the react-app directory
 
 ## Features
+### Uploads/Comments
 Logged-in Users are able to upload/watch/edit/delete their own videos, as well as commenting/watching other's uploads
 <img width="1231" alt="2022-05-22" src="https://user-images.githubusercontent.com/92695890/169780392-a017303d-94a6-4704-a383-83806f36901b.png">
 
+### Interface
 User's uploads include an 8-characters title and a caption of their own choice. These posts are presented vertically with the latest uploads being displayed first.
 <img width="1235" alt="2022-05-22 (2)" src="https://user-images.githubusercontent.com/92695890/169781084-b180109c-31e9-476d-a4a1-974cc049d6bc.png">
 
