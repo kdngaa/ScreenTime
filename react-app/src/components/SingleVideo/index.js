@@ -71,10 +71,6 @@ const SingleVideo = () => {
 
 
 
-
-                            </>
-                        )}
-
                                 <button className="deleteBtn grow" onClick={(e) => {
                                     dispatch(videoActions.removeAVideo(video.id))
                                     // dispatch(videoActions.loadAllVideosThunk(id))
@@ -84,6 +80,10 @@ const SingleVideo = () => {
                                     <img src="https://res.cloudinary.com/dv3gxfdon/image/upload/v1652926984/Icon-Trash-Can-clipart-transparent_cuo1l1.png" style={{ width: '30px', height: '30px' }} />
 
                                 </button>
+
+
+                            </>
+                        )}
                         <p className="singleVidTitle">{`${video.title}`}</p>
                         <p className="descriptionContent">{`${video.description}`}</p>
                         <div className="chatbox">
