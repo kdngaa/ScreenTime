@@ -41,3 +41,7 @@
     font-size: 15px;
     color: black;
 }
+
+a:link {
+    text-decoration: none!important;
+  }
