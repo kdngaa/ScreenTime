@@ -177,3 +177,8 @@ label:nth-of-type(2) {
   box-sizing: border-box;
   overflow-wrap: break-word
 }
+
+
+textarea {
+  resize: none;
+}
