@@ -22,50 +22,51 @@ const Search = () => {
         setFilteredList(
             vids.filter(
                 (video) =>
-                video[0].toLowerCase().includes(search.toLowerCase()) ||
-                video[1].toLowerCase().includes(search.toLowerCase())
+                    video[0].toLowerCase().includes(search.toLowerCase()) ||
+                    video[1].toLowerCase().includes(search.toLowerCase())
             )
         )
     }, [search])
 
     const handleSubmit = async (e) => {
         e.preventDefault()
-        if(filteredList.length > 0){
+        if (filteredList.length > 0) {
             setShow(true)
             history.push(`./videos/${filteredList[0][2]}`)  //index 2 for video ID
         }
     }
 
-    return(
+    return (
         <div className="search-bar">
-        <form onSubmit={handleSubmit}>
-          <input
-            className="search-bar-input"
-            type="text"
-            placeholder="Search by Title..."
-            value={search}
-            onChange={(e) => setSearch(e.target.value)}
-          />
-        </form>
-        {search && (
-          <div className="search-result">
-            <ul className="searchresult-list">
-              {filteredList.map((video) => (
-                <li
-                  key={video.id}
-                  value={video.title}
-                  onClick={() => {
-                    history.push(`/videos/${video[2]}`);
-                    setSearch("");
-                  }}
-                >
-                  {video[0]}
-                </li>
-              ))}
-            </ul>
-          </div>
-        )}
-      </div>
+            <form onSubmit={handleSubmit}>
+                <input
+                    className="search-bar-input"
+                    type="text"
+                    placeholder="Search by Title..."
+                    value={search}
+                    onChange={(e) => setSearch(e.target.value)}
+                />
+            </form>
+            {search && (
+                <div className="search-result">
+                    <ul className="searchresult-list">
+                        {filteredList.map((video) => (
+                            <li
+                                key={video.id}
+                                value={video.title}
+                                onClick={() => {
+                                    history.push(`/videos/${video[2]}`);
+                                    setSearch("");
+                                }}
+                                className="searchRes"
+                            >
+                               <a href="#" className='resATag'> {video[0]}</a>
+                            </li>
+                        ))}
+                    </ul>
+                </div>
+            )}
+        </div>
     )
 }
 
