@@ -4,6 +4,7 @@ import { NavLink } from 'react-router-dom';
 import LogoutButton from './auth/LogoutButton';
 import { useSelector } from 'react-redux';
 import './NavBar.css'
+import Search from './Search';
 
 const NavBar = () => {
 
@@ -18,11 +19,6 @@ const NavBar = () => {
       </div>
       <nav >
         <div className='authButtons'>
-          <p className='authButton'>
-            <NavLink to='/' exact={true} activeClassName='active' className='authBtn'>
-              Home
-            </NavLink>
-          </p>
           {!user && (
             <>
               <p className='authButton'>
@@ -40,6 +36,15 @@ const NavBar = () => {
           )}
           {user && (
             <>
+              <Search />
+
+              <p className='authButton'>
+                <NavLink to='/' exact={true} activeClassName='active' className='authBtn'>
+                  Home
+                </NavLink>
+              </p>
+
+
               <p className='authButton'>
                 <NavLink to='/videos' exact={true} activeClassName='active' className='authBtn'>
                   Videos

@@ -54,9 +54,11 @@
   .search-bar-input {
     width: 400px;
     height: 30px;
+    margin-top: 2%;
     background-color: #212121;
     color: #ababab;
     font-weight: lighter;
+    border-radius: 10px;
     /* border-radius: 10px; */
   }
   .search-bar-input:focus {

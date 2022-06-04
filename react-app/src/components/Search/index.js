@@ -1,7 +1,7 @@
-import './seach.css'
 import { useSelector } from 'react-redux'
 import { useHistory } from 'react-router-dom'
 import { useEffect, useState } from 'react'
+import './search.css'
 
 
 const Search = () => {
@@ -42,7 +42,7 @@ const Search = () => {
           <input
             className="search-bar-input"
             type="text"
-            placeholder="Search"
+            placeholder="Search by Title"
             value={search}
             onChange={(e) => setSearch(e.target.value)}
           />
