@@ -65,3 +65,49 @@ export const deleteLikeThunk = id => async dispatch => {
 }
 
 
+
+
+//LIKE REDUCER
+const initialState = {}
+
+const likeReducer = (state = initialState, action) => {
+    let newState;
+    switch (action.type) {
+        case LOAD:
+            const allLikes = {};
+            action.likes.likes.forEach(like => {
+                allLikes[like.id] = like
+            });
+            return {
+                ...state,
+                ...allLikes
+            };
+
+        case ADD_LIKE:
+            if (!state[action.like.id]) {
+                console.log(action.like, "<<<<<=====")
+                newState = {
+                    ...state,
+                    [action.like.id]: action.like
+                }
+                return newState
+            }
+            return {
+                ...state,
+                [action.like.id]: {
+                    ...state[action.like.id],
+                    ...action.like
+                }
+            }
+        case REMOVE_LIKE:
+            newState = { ...state }
+            delete newState[action.id]
+            return newState
+
+        default:
+            return state
+    }
+}
+
+
+export default likeReducer;

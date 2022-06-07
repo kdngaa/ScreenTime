@@ -1,6 +1,7 @@
 import { createStore, combineReducers, applyMiddleware, compose } from 'redux';
 import thunk from 'redux-thunk';
 import commentReducer from './comments';
+import likeReducer from './likes';
 import session from './session'
 import videoReducer from './videos.js'
 
@@ -8,6 +9,7 @@ const rootReducer = combineReducers({
   session,
   videos:videoReducer,
   comments:commentReducer,
+  likes:likeReducer,
 });
 
 
