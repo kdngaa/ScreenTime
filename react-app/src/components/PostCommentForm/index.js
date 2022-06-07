@@ -44,17 +44,17 @@ function PostComment({ video }) {
 
         setErrorVisible(true)
 
-        const comment = { content, videoId:id, userId: sessionUser.id }
+        const comment = { content, videoId: id, userId: sessionUser.id }
 
 
         if (errors.length === 0) {
 
 
-        await dispatch(commentActions.postComment(comment, id))
+            await dispatch(commentActions.postComment(comment, id))
 
-        setContent("")
-        setErrors([])
-        setErrorVisible(false)
+            setContent("")
+            setErrors([])
+            setErrorVisible(false)
         }
         // history.push(`/videos/${video.id}`)
 
@@ -63,15 +63,15 @@ function PostComment({ video }) {
     return (
         <section>
             <form onSubmit={handleSubmit}>
-            <div className="errors">
-            {errorVisible && (<ul>
+                <div className="errors">
+                    {errorVisible && (<ul>
                         {errors.map((error, indx) => (
                             <li key={indx}>
                                 {error}
                             </li>
                         ))}
                     </ul>)}
-                    </div>
+                </div>
                 <textarea
                     type="text"
                     name="content"
@@ -82,7 +82,7 @@ function PostComment({ video }) {
                     className="commentBox"
                 />
                 <p>
-                <button type="submit" className='commentBtn'>Post Comment</button>
+                    <button type="submit" className='commentBtn'>Post Comment</button>
                 </p>
             </form>
         </section>
