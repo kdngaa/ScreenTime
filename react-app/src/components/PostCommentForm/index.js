@@ -81,8 +81,9 @@ function PostComment({ video }) {
                     placeholder='Comment here...'
                     className="commentBox"
                 />
-                <button type="submit" className='commentBtn'>Post</button>
-
+                <p>
+                <button type="submit" className='commentBtn'>Post Comment</button>
+                </p>
             </form>
         </section>
     )
