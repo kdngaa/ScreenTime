@@ -4,4 +4,4 @@ from .comment import Comment
 from .video import Video
 from .playlist import Playlist
 from .videojoinplaylist import video_playlist
-from .like import like
+from .like import Like

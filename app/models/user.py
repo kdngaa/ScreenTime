@@ -16,7 +16,7 @@ class User(db.Model, UserMixin):
     playlists = db.relationship('Playlist', back_populates='user')
     videos = db.relationship('Video', back_populates='user')
     comments = db.relationship('Comment', back_populates='user')
-
+    likes = db.relationship('Like', back_populates='user')
 
     @property
     def password(self):

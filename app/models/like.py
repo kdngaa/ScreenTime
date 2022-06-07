@@ -1,5 +1,6 @@
 from .db import db
 from sqlalchemy.sql import func
+from sqlalchemy import ForeignKey
 
 class Like(db.Model):
   __tablename__ = 'likes'

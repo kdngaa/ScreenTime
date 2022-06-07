@@ -1,8 +1,8 @@
 """empty message
 
-Revision ID: 9e33b655f6a8
+Revision ID: f8267eb5f8a0
 Revises: 
-Create Date: 2022-05-13 16:34:46.771411
+Create Date: 2022-06-07 13:10:38.811472
 
 """
 from alembic import op
@@ -10,7 +10,7 @@ import sqlalchemy as sa
 
 
 # revision identifiers, used by Alembic.
-revision = '9e33b655f6a8'
+revision = 'f8267eb5f8a0'
 down_revision = None
 branch_labels = None
 depends_on = None
@@ -62,11 +62,14 @@ def upgrade():
     sa.PrimaryKeyConstraint('id')
     )
     op.create_table('likes',
-    sa.Column('userId', sa.Integer(), nullable=False),
+    sa.Column('id', sa.Integer(), nullable=False),
     sa.Column('videoId', sa.Integer(), nullable=False),
+    sa.Column('userId', sa.Integer(), nullable=False),
+    sa.Column('createdAt', sa.DateTime(timezone=True), server_default=sa.text('now()'), nullable=False),
+    sa.Column('updatedAt', sa.DateTime(timezone=True), server_default=sa.text('now()'), nullable=True),
     sa.ForeignKeyConstraint(['userId'], ['users.id'], ),
     sa.ForeignKeyConstraint(['videoId'], ['videos.id'], ),
-    sa.PrimaryKeyConstraint('userId', 'videoId')
+    sa.PrimaryKeyConstraint('id')
     )
     op.create_table('video_playlist',
     sa.Column('videoId', sa.Integer(), nullable=False),
