@@ -1,27 +1,27 @@
-import datetime
 from .db import db
-from sqlalchemy import Column, ForeignKey
+from sqlalchemy.sql import func
 
+class Like(db.Model):
+  __tablename__ = 'likes'
 
-like = db.Table(
-    'likes',
+  id = db.Column(db.Integer, primary_key=True)
+  videoId = db.Column(db.Integer, ForeignKey('videos.id'), nullable=False)
+  userId = db.Column(db.Integer, ForeignKey('users.id'), nullable=False)
+  createdAt = db.Column(db.DateTime(timezone=True), server_default=func.now(), nullable=False)
+  updatedAt = db.Column(db.DateTime(timezone=True), server_onupdate=func.now(), server_default=func.now())
 
+  user = db.relationship('User', back_populates='likes')
+  video = db.relationship('Video', back_populates='likes')
 
-    db.Column(
-        'userId',
-        db.Integer,
-        db.ForeignKey('users.id'),
-        primary_key=True
-    ),
-
-
-    db.Column(
-        'videoId',
-        db.Integer,
-        db.ForeignKey('videos.id'),
-        primary_key=True
-    )
-)
+  def to_dict(self):
+    return {
+      'id':self.id,
+      'videoId': self.videoId,
+      'userId': self.userId,
+      'user': self.user.to_dict(),
+      'createdAt': self.createdAt,
+      'updatedAt': self.updatedAt
+    }
 
 
 
