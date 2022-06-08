@@ -33,3 +33,13 @@ def post_likes():
   db.session.commit()
 
   return new_like.to_dict()
+
+
+
+#UNLIKE
+@like_routes.route('/<int:id>', methods=['DELETE'])
+def delete_like(id):
+  like = Like.query.get(id)
+  db.session.delete(like)
+  db.session.commit()
+  return 'Like Removed'
