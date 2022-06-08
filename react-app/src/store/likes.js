@@ -101,7 +101,7 @@ const likeReducer = (state = initialState, action) => {
             }
         case REMOVE_LIKE:
             newState = { ...state }
-            delete newState[action.id]
+            delete newState[action.like]
             return newState
 
         default:

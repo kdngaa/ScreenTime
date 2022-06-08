@@ -8,6 +8,7 @@ import './SingleVideo.css'
 import PostComment from "../PostCommentForm";
 import EditComment from "../EditCommentForm";
 import EditVideo from "../EditVideoForm";
+import * as likeActions from '../../store/likes'
 // import Popup from 'reactjs-popup';
 // import 'reactjs-popup/dist/index.css';
 
@@ -29,7 +30,34 @@ const SingleVideo = () => {
     useEffect(() => {
         dispatch(commentActions.loadComments(id))
         dispatch(videoActions.loadVideoThunk(id))
+        dispatch(likeActions.loadLikesThunk())
     }, [dispatch]) //no dispatching comments?
+
+
+
+    const allLikes = useSelector(state => state.likes)
+    const allLikesArr = Object.values(allLikes)
+    const likes = allLikesArr.filter((like) => {
+        return like?.videoId === video?.id
+    })
+
+    let like = likes?.find((like) => {
+        return sessionUser.id === like.userId
+    })
+
+
+
+    const handleLike = e => {
+        e.preventDefault()
+        if (like) {
+            dispatch(likeActions.deleteLikeThunk(like?.id))
+        } else {
+            dispatch(likeActions.postLikeThunk(video?.id))
+        }
+    }
+
+
+
 
 
     // if (!comments) {
@@ -88,6 +116,14 @@ const SingleVideo = () => {
                         <p className="descriptionContent">{`${video.description}`}</p>
                         <div className="chatbox">
                             <PostComment video={video} />
+                            <div className="likeSection">
+                                {like ? (
+                                    <button className="likeBtn" onClick={handleLike}><img src="https://res.cloudinary.com/dv3gxfdon/image/upload/v1654730104/icons8-heart-64_iqf9n2.png"></img></button>
+                                ) : (
+                                    <button  className="likeBtn" onClick={handleLike}><img src="https://res.cloudinary.com/dv3gxfdon/image/upload/v1654730102/icons8-heart-64_1_qvn6ii.png"></img></button>
+                                )}
+                                <p>{likes?.length} likes</p>
+                            </div>
                         </div>
                         {sessionUser.id === video.userId}
                     </div>)}
