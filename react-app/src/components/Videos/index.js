@@ -4,6 +4,7 @@ import { useHistory } from "react-router-dom";
 import * as videoActions from '../../store/videos'
 import './Videos.css'
 import ReactPlayer from 'react-player'
+import * as likeActions from '../../store/likes'
 
 const Videos = () => {
     const dispatch = useDispatch()
@@ -11,10 +12,36 @@ const Videos = () => {
 
     useEffect(async () => {
         await dispatch(videoActions.loadAllVideosThunk())
+        await dispatch(likeActions.loadLikesThunk())
     }, [dispatch])
 
     const videos = useSelector(state => state.videos);
     const videoData = Object.values(videos)
+
+
+    const sessionUser = useSelector((state) => state.session.user)
+    const allLikes = useSelector(state => state.likes)
+    const allLikesArr = Object.values(allLikes)
+    const likes = allLikesArr.filter((like) => {
+        return like?.videoId === videoData?.id
+    })
+
+    let like = likes?.find((like) => {
+        return sessionUser.id === like.userId
+    })
+
+
+
+    const handleLike = e => {
+        e.preventDefault()
+        if (like) {
+            dispatch(likeActions.deleteLikeThunk(like?.id))
+        } else {
+            dispatch(likeActions.postLikeThunk(videoData?.id))
+        }
+    }
+
+
 
     return (
         <>
