@@ -114,16 +114,16 @@ const SingleVideo = () => {
                         )}
                         <p className="singleVidTitle">{`${video.title}`}</p>
                         <p className="descriptionContent">{`${video.description}`}</p>
-                        <div className="chatbox">
-                            <PostComment video={video} />
                             <div className="likeSection">
                                 {like ? (
                                     <button className="likeBtn" onClick={handleLike}><img src="https://res.cloudinary.com/dv3gxfdon/image/upload/v1654730104/icons8-heart-64_iqf9n2.png"></img></button>
                                 ) : (
                                     <button  className="likeBtn" onClick={handleLike}><img src="https://res.cloudinary.com/dv3gxfdon/image/upload/v1654730102/icons8-heart-64_1_qvn6ii.png"></img></button>
                                 )}
-                                <p>{likes?.length} likes</p>
+                                <p>{likes?.length} Likes</p>
                             </div>
+                        <div className="chatbox">
+                            <PostComment video={video} />
                         </div>
                         {sessionUser.id === video.userId}
                     </div>)}
