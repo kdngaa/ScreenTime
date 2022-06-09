@@ -38,7 +38,7 @@ const Videos = () => {
 
 
 
-    // const handleLike = e => {
+    // const handleLike = (e) => {
     //     e.preventDefault()
     //     if (like) {
     //         dispatch(likeActions.deleteLikeThunk(like?.id))
@@ -82,18 +82,18 @@ const Videos = () => {
                                 <p className="videoDescription">{video?.description}</p>
                             </div>
 
-{/*
-                            <div className="likeSection">
+
+
+                            {/* <div className="likeSection">
                                 {like ? (
-                                    <button className="likeBtn" onClick={handleLike}><img src="https://res.cloudinary.com/dv3gxfdon/image/upload/v1654730104/icons8-heart-64_iqf9n2.png"></img></button>
+                                    <button className="likeBtn" onClick={handleLike()}><img src="https://res.cloudinary.com/dv3gxfdon/image/upload/v1654730104/icons8-heart-64_iqf9n2.png"></img></button>
                                 ) : (
-                                    <button  className="likeBtn" onClick={handleLike}><img src="https://res.cloudinary.com/dv3gxfdon/image/upload/v1654730102/icons8-heart-64_1_qvn6ii.png"></img></button>
+                                    <button className="likeBtn" onClick={handleLike()}><img src="https://res.cloudinary.com/dv3gxfdon/image/upload/v1654730102/icons8-heart-64_1_qvn6ii.png"></img></button>
                                 )}
                             </div> */}
-
                         </div>
-
                     </a>
+
 
                 ))}
             </div>
