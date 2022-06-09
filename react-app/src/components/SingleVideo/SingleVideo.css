@@ -1,4 +1,4 @@
-
+@import url('https://fonts.googleapis.com/css?family=Anton&display=swap');
 
 
 /* .commentSection{
@@ -37,4 +37,25 @@
 .likeBtn{
     background-color: rgba(255, 255, 255, 0.9); /* Color white with alpha 0.9*/
     border: 10px solid rgba(255,255,255,.5);
+}
+
+
+.likeSection{
+    position: absolute;
+    right: 0;
+    margin-right: 15%;
+    bottom: 45%;
+}
+
+
+.likeImg{
+    width: 150px;
+    height: 150px;
+}
+
+
+.likeNum{
+    font-family: "Anton", sans-serif;
+    font-size: 65px;
+    text-align: center;
 }
