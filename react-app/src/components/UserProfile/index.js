@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { useHistory, useParams } from 'react-router-dom';
 import * as videoActions from '../../store/videos'
 import ReactPlayer from 'react-player'
+import * as likeActions from '../../store/likes'
 import './userProf.css'
 
 export const UserProfile = () => {
@@ -16,6 +17,7 @@ export const UserProfile = () => {
 
     useEffect(async () => {
         await dispatch(videoActions.loadAllVideosThunk())
+        await dispatch(likeActions.loadLikesThunk())
     }, [dispatch])
 
 
@@ -26,6 +28,8 @@ export const UserProfile = () => {
     }
 
     const videos = useSelector(state => Object.values(state.videos))
+    const allLikes = useSelector(state => state.likes)
+    const allLikesArr = Object.values(allLikes)
 
     const myUploads = videos.filter(video => video.userId === +sessionUser.id)
 
