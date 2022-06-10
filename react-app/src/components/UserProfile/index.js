@@ -17,7 +17,7 @@ export const UserProfile = () => {
 
     useEffect(async () => {
         await dispatch(videoActions.loadAllVideosThunk())
-        await dispatch(likeActions.loadLikesThunk())
+        await dispatch(likeActions.loadLikesThunk(id))
     }, [dispatch])
 
 
@@ -32,6 +32,7 @@ export const UserProfile = () => {
     const allLikesArr = Object.values(allLikes)
 
     const myUploads = videos.filter(video => video.userId === +sessionUser.id)
+    const myLikes = allLikesArr.filter(like => like.userId === +sessionUser.id)
 
     return (
         <>
@@ -51,10 +52,11 @@ export const UserProfile = () => {
 
                 <h2 className="userSubHeader">Liked</h2>
                 <div className="vidList">
-
-
-
-
+                {myLikes.reverse().map((like, idx) => (
+                        <a href={`/likes/${like.id}`}>
+                            <p key={idx} className='linkText'>{like.videoId}</p>
+                        </a>
+                    ))}
                 </div>
             </div>
         </>
