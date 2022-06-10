@@ -50,7 +50,7 @@ export const UserProfile = () => {
                     ))}
                 </div>
 
-                <h2 className="userSubHeader">Liked</h2>
+                {/* <h2 className="userSubHeader">Liked</h2> */}
                 {/* <div className="vidList">
                 {myLikes.reverse().map((like, idx) => (
                         <a href={`/videos/${like.id}`}>
