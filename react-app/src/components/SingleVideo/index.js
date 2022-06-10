@@ -75,7 +75,7 @@ const SingleVideo = () => {
                 {/* VIDEO SECTION */}
                 <div className="singleVideoContainer">
                     {video && (<div className="singleVideo">
-                        <p className="singleVidTitle">{`${video.title}`}</p>
+                        {/* <p className="singleVidTitle">{`${video.title}`}</p> */}
                         <ReactPlayer
                             url={`${video.uploadFile}`}
                             controls
@@ -85,10 +85,10 @@ const SingleVideo = () => {
                         {sessionUser.id === video.userId && (
                             <>
 
-                                <button onClick={(e) => {
+                                <button className="editVidBtn" onClick={(e) => {
                                     setShow(!show)
                                 }}>
-                                    <img src="https://res.cloudinary.com/dv3gxfdon/image/upload/v1652926986/edit-button-1551_npwjzv.png" style={{ width: '30px', height: '30px' }} />
+                                    <img src="https://res.cloudinary.com/dv3gxfdon/image/upload/v1654837692/edit_1_ntjjia.png"  />
 
                                 </button>
 
@@ -100,20 +100,20 @@ const SingleVideo = () => {
 
 
 
-                                <button className="deleteBtn grow" onClick={(e) => {
+                                <button className="deleteVidBtn" onClick={(e) => {
                                     dispatch(videoActions.removeAVideo(video.id))
                                     // dispatch(videoActions.loadAllVideosThunk(id))
                                     history.push(`/videos`)
                                 }}>
 
-                                    <img src="https://res.cloudinary.com/dv3gxfdon/image/upload/v1652926984/Icon-Trash-Can-clipart-transparent_cuo1l1.png" style={{ width: '30px', height: '30px' }} />
+                                    <img src="https://res.cloudinary.com/dv3gxfdon/image/upload/v1654837692/delete_1_igxabt.png"  />
 
                                 </button>
 
 
                             </>
                         )}
-                        {/* <p className="singleVidTitle">{`${video.title}`}</p> */}
+                        <p className="singleVidTitle">{`${video.title}`}</p>
                         <p className="descriptionContent">{`${video.description}`}</p>
                         <div className="likeSection">
                             {like ? (
@@ -151,7 +151,7 @@ const SingleVideo = () => {
 
                                         }}>
 
-                                            <img src="https://res.cloudinary.com/dv3gxfdon/image/upload/v1652926986/edit-button-1551_npwjzv.png" style={{ width: '15px', height: '15px' }} />
+                                            <img src="https://res.cloudinary.com/dv3gxfdon/image/upload/v1654837513/edit_hnmb2l.png" style={{ width: '15px', height: '15px' }} />
                                         </button>
 
                                         {showComment == comment.id &&
@@ -164,7 +164,7 @@ const SingleVideo = () => {
                                             dispatch(commentActions.loadComments(id))
                                         }}>
 
-                                            <img src="https://res.cloudinary.com/dv3gxfdon/image/upload/v1652926984/Icon-Trash-Can-clipart-transparent_cuo1l1.png" style={{ width: '15px', height: '15px' }} />
+                                            <img src="https://res.cloudinary.com/dv3gxfdon/image/upload/v1654837513/delete_huci8n.png" style={{ width: '15px', height: '15px' }} />
                                         </button>
                                     </>
                                 )}

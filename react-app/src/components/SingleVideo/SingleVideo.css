@@ -6,7 +6,7 @@
 } */
 
 .singleVideoContainer{
-    padding-top: 0.2%;
+    padding-top: 2%;
 }
 
 
@@ -19,7 +19,7 @@
 .singleVidTitle{
     font-family: 'Montserrat', sans-serif;
     font-weight: 900;
-    font-size: 60px;
+    font-size: 30px;
 }
 
 
@@ -44,7 +44,7 @@
     position: absolute;
     right: 0;
     margin-right: 15%;
-    bottom: 30%;
+    bottom: 40%;
 }
 
 
@@ -58,4 +58,14 @@
     font-family: "Anton", sans-serif;
     font-size: 65px;
     text-align: center;
+}
+
+.deleteVidBtn{
+    background-color: rgba(255, 255, 255, 0.9); /* Color white with alpha 0.9*/
+    border: 10px solid rgba(255,255,255,.5);
+}
+
+.editVidBtn{
+    background-color: rgba(255, 255, 255, 0.9); /* Color white with alpha 0.9*/
+    border: 10px solid rgba(255,255,255,.5);
 }
