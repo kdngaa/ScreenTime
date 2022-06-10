@@ -33,7 +33,7 @@ export const UserProfile = () => {
         <>
             <div className="uploads">
                 <h1 className="userHeader">Welcome, {sessionUser.username}</h1>
-                <h2 className="userSubHeader">My Videos</h2>
+                <h2 className="userSubHeader">Uploads</h2>
                 <div className="vidList">
                     {myUploads.reverse().map((upload, idx) => (
                         <>
