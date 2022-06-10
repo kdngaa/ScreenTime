@@ -116,7 +116,7 @@ const SingleVideo = () => {
                         <p className="descriptionContent">{`${video.description}`}</p>
                             <div className="likeSection">
                                 {like ? (
-                                    <button  className="likeBtn" onClick={handleLike}><img className="likeImg" src="https://res.cloudinary.com/dv3gxfdon/image/upload/v1654819759/love_wj07gk.png"></img></button>
+                                    <button  className="likeBtn" onClick={handleLike}><img className="likeImg" src="https://res.cloudinary.com/dv3gxfdon/image/upload/v1654821741/love_2_kkrldq.png"></img></button>
                                     ) : (
                                     <button className="likeBtn" onClick={handleLike}><img className="likeImg" src="https://res.cloudinary.com/dv3gxfdon/image/upload/v1654819759/love_1_hphfcn.png"></img></button>
                                 )}
