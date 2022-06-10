@@ -75,6 +75,7 @@ const SingleVideo = () => {
                 {/* VIDEO SECTION */}
                 <div className="singleVideoContainer">
                     {video && (<div className="singleVideo">
+                        <p className="singleVidTitle">{`${video.title}`}</p>
                         <ReactPlayer
                             url={`${video.uploadFile}`}
                             controls
@@ -112,16 +113,16 @@ const SingleVideo = () => {
 
                             </>
                         )}
-                        <p className="singleVidTitle">{`${video.title}`}</p>
+                        {/* <p className="singleVidTitle">{`${video.title}`}</p> */}
                         <p className="descriptionContent">{`${video.description}`}</p>
-                            <div className="likeSection">
-                                {like ? (
-                                    <button  className="likeBtn" onClick={handleLike}><img className="likeImg" src="https://res.cloudinary.com/dv3gxfdon/image/upload/v1654834311/heart_2_qwubjz.png"></img></button>
-                                    ) : (
-                                    <button className="likeBtn" onClick={handleLike}><img className="likeImg" src="https://res.cloudinary.com/dv3gxfdon/image/upload/v1654834312/heart_1_kwdvzx.png"></img></button>
-                                )}
-                                <p className="likeNum">{likes?.length}</p>
-                            </div>
+                        <div className="likeSection">
+                            {like ? (
+                                <button className="likeBtn" onClick={handleLike}><img className="likeImg" src="https://res.cloudinary.com/dv3gxfdon/image/upload/v1654834311/heart_2_qwubjz.png"></img></button>
+                            ) : (
+                                <button className="likeBtn" onClick={handleLike}><img className="likeImg" src="https://res.cloudinary.com/dv3gxfdon/image/upload/v1654834312/heart_1_kwdvzx.png"></img></button>
+                            )}
+                            <p className="likeNum">{likes?.length}</p>
+                        </div>
                         <div className="chatbox">
                             <PostComment video={video} />
                         </div>
