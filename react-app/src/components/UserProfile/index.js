@@ -51,13 +51,13 @@ export const UserProfile = () => {
                 </div>
 
                 <h2 className="userSubHeader">Liked</h2>
-                <div className="vidList">
+                {/* <div className="vidList">
                 {myLikes.reverse().map((like, idx) => (
-                        <a href={`/likes/${like.id}`}>
+                        <a href={`/videos/${like.id}`}>
                             <p key={idx} className='linkText'>{like.videoId}</p>
                         </a>
                     ))}
-                </div>
+                </div> */}
             </div>
         </>
     )
