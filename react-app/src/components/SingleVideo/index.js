@@ -88,7 +88,7 @@ const SingleVideo = () => {
                                 <button className="editVidBtn" onClick={(e) => {
                                     setShow(!show)
                                 }}>
-                                    <img src="https://res.cloudinary.com/dv3gxfdon/image/upload/v1654837692/edit_1_ntjjia.png"  />
+                                    <img src="https://res.cloudinary.com/dv3gxfdon/image/upload/v1654838514/edit_2_pohiys.png"  />
 
                                 </button>
 
@@ -106,7 +106,7 @@ const SingleVideo = () => {
                                     history.push(`/videos`)
                                 }}>
 
-                                    <img src="https://res.cloudinary.com/dv3gxfdon/image/upload/v1654837692/delete_1_igxabt.png"  />
+                                    <img src="https://res.cloudinary.com/dv3gxfdon/image/upload/v1654838514/trash-bin_r8pvlt.png"  />
 
                                 </button>
 
