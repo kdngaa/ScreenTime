@@ -91,12 +91,13 @@ const SingleVideo = () => {
                                 {sessionUser.id === video.userId && (
                                     <>
                                         {/* <Popup trigger={<button> Trigger</button>} position="right center"> */}
-                                            <button className="editVidBtn" onClick={(e) => {
-                                                setShow(!show)
-                                            }}>
-                                                <img src="https://res.cloudinary.com/dv3gxfdon/image/upload/v1654838514/edit_2_pohiys.png" />
+                                        <button className="editVidBtn" onClick={(e) => {
+                                            setShow(!show)
+                                        }}>
+                                            <img src="https://res.cloudinary.com/dv3gxfdon/image/upload/v1654838514/edit_2_pohiys.png" />
 
-                                            </button>
+                                        </button>
+
                                         {/* </Popup> */}
 
                                         {show &&
