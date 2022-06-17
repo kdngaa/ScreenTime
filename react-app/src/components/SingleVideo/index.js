@@ -79,12 +79,14 @@ const SingleVideo = () => {
                         <ReactPlayer
                             url={`${video.uploadFile}`}
                             controls
-                            width='60%' height='550px'
+                            width='66%' height='550px'
                             className="singleVideo"
                         />
                         <div className="allVideoInfo">
+                            <div>
                             <p className="singleVidTitle">{`${video.title}`}</p>
                             <p className="descriptionContent">{`${video.description}`}</p>
+                            </div>
                             <div className="editAnddel">
                                 {sessionUser.id === video.userId && (
                                     <>
