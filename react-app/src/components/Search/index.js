@@ -33,7 +33,7 @@ const Search = () => {
         if (filteredList.length > 0) {
             setShow(true)
             history.push(`./videos/${filteredList[0][2]}`)  //index 2 for video ID
-        }
+        } 
     }
 
     return (
