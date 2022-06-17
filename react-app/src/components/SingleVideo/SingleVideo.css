@@ -76,3 +76,8 @@
     flex-direction: row;
     align-items: center;
 }
+
+.commentEdit{
+    background: none;
+    border: none;
+}

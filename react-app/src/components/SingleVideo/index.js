@@ -146,7 +146,7 @@ const SingleVideo = () => {
                                 {sessionUser.id === comment.userId && (
                                     <>
 
-                                        <button onClick={(e) => {
+                                        <button className="commentEdit" onClick={(e) => {
 
                                             setShowComment(showComment == comment?.id ? "" : comment?.id)
 
@@ -160,7 +160,7 @@ const SingleVideo = () => {
                                         }
 
 
-                                        <button className="deleteBtn grow" onClick={(e) => {
+                                        <button className="commentEdit" onClick={(e) => {
                                             dispatch(commentActions.removeAComment(comment.id))
                                             dispatch(commentActions.loadComments(id))
                                         }}>
