@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import * as videoActions from '../../store/videos'
 import { useHistory, useParams } from 'react-router-dom';
 import './EditVideo.css'
-
+import Popup from 'reactjs-popup';
 
 function EditVideo({ newVideo, prop }) {
     const dispatch = useDispatch()
@@ -54,43 +54,45 @@ function EditVideo({ newVideo, prop }) {
 
     return (
         <section>
-            <form onSubmit={handleSubmit}>
-                <div className="errors">
-                <ul>
-                    {errors.map((error, indx) => (
-                        <li key={indx}>
-                            {error}
-                        </li>
-                    ))}
-                </ul>
-                </div>
-                <div>
-                    <label>Title</label>
-                    <input
-                        type="text"
-                        name="title"
-                        onChange={(e) => setTitle(e.target.value)}
-                        value={title}
-                        placeholder='New title here...'
-                    />
-                </div>
-                <div>
-                    <label>Description</label>
-                    <textarea
-                        type="text"
-                        name="description"
-                        onChange={(e) => setDescription(e.target.value)}
-                        value={description}
-                        maxLength="256"
-                        placeholder='New description here...'
-                        className="editDesc"
-                    />
-                </div>
+            {/* <Popup trigger={<button> Trigger</button>} position="right center"> */}
+                <form onSubmit={handleSubmit}>
+                    <div className="errors">
+                        <ul>
+                            {errors.map((error, indx) => (
+                                <li key={indx}>
+                                    {error}
+                                </li>
+                            ))}
+                        </ul>
+                    </div>
+                    <div>
+                        <label>Title</label>
+                        <input
+                            type="text"
+                            name="title"
+                            onChange={(e) => setTitle(e.target.value)}
+                            value={title}
+                            placeholder='New title here...'
+                        />
+                    </div>
+                    <div>
+                        <label>Description</label>
+                        <textarea
+                            type="text"
+                            name="description"
+                            onChange={(e) => setDescription(e.target.value)}
+                            value={description}
+                            maxLength="256"
+                            placeholder='New description here...'
+                            className="editDesc"
+                        />
+                    </div>
 
 
-                <button type="submit" className='editBtn' disabled={errors.length > 0}>Update Video</button>
+                    <button type="submit" className='editBtn' disabled={errors.length > 0}>Update Video</button>
 
-            </form>
+                </form>
+            {/* </Popup> */}
         </section>
     )
 }
