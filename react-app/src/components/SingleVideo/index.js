@@ -82,40 +82,42 @@ const SingleVideo = () => {
                             width='60%' height='550px'
                             className="singleVideo"
                         />
-                        <div>
+                        <div className="allVideoInfo">
                             <p className="singleVidTitle">{`${video.title}`}</p>
                             <p className="descriptionContent">{`${video.description}`}</p>
-                            {sessionUser.id === video.userId && (
-                                <>
+                            <div className="editAnddel">
+                                {sessionUser.id === video.userId && (
+                                    <>
 
-                                    <button className="editVidBtn" onClick={(e) => {
-                                        setShow(!show)
-                                    }}>
-                                        <img src="https://res.cloudinary.com/dv3gxfdon/image/upload/v1654838514/edit_2_pohiys.png" />
+                                        <button className="editVidBtn" onClick={(e) => {
+                                            setShow(!show)
+                                        }}>
+                                            <img src="https://res.cloudinary.com/dv3gxfdon/image/upload/v1654838514/edit_2_pohiys.png" />
 
-                                    </button>
-
-
-                                    {show &&
-                                        <EditVideo newVideo={video} prop={prop} />
-                                    }
+                                        </button>
 
 
+                                        {show &&
+                                            <EditVideo newVideo={video} prop={prop} />
+                                        }
 
 
-                                    <button className="deleteVidBtn" onClick={(e) => {
-                                        dispatch(videoActions.removeAVideo(video.id))
-                                        // dispatch(videoActions.loadAllVideosThunk(id))
-                                        history.push(`/videos`)
-                                    }}>
-
-                                        <img src="https://res.cloudinary.com/dv3gxfdon/image/upload/v1654838514/trash-bin_r8pvlt.png" />
-
-                                    </button>
 
 
-                                </>
-                            )}
+                                        <button className="deleteVidBtn" onClick={(e) => {
+                                            dispatch(videoActions.removeAVideo(video.id))
+                                            // dispatch(videoActions.loadAllVideosThunk(id))
+                                            history.push(`/videos`)
+                                        }}>
+
+                                            <img src="https://res.cloudinary.com/dv3gxfdon/image/upload/v1654838514/trash-bin_r8pvlt.png" />
+
+                                        </button>
+
+
+                                    </>
+                                )}
+                            </div>
                         </div>
                         <div className="likeSection">
                             {like ? (
