@@ -136,11 +136,12 @@ const SingleVideo = () => {
                 <div className="commentSection">
                     <h2 className="commHeader">COMMENT SECTION ({commentData.length})</h2>
                     {commentData.map((comment, idx) => (
-                        <div key={comment.id}>
+                        <div key={comment.id} className="allCommentInfo">
                             <div className="subComment">
                                 <p className="commentCreator">{comment.user.username} said:</p>
                                 <p key={idx} className="commentContent">{comment.content}</p>
                             </div>
+
                             <div>
                                 {sessionUser.id === comment.userId && (
                                     <>
