@@ -33,7 +33,7 @@ const Search = () => {
         if (filteredList.length > 0) {
             setShow(true)
             history.push(`./videos/${filteredList[0][2]}`)  //index 2 for video ID
-        } 
+        }
     }
 
     return (
@@ -60,7 +60,7 @@ const Search = () => {
                                 }}
                                 className="searchRes"
                             >
-                               <a href="#" className='resATag'> {video[0]}</a>
+                                <a href="#" className='resATag'> {video[0]}</a>
                             </li>
                         ))}
                     </ul>
