@@ -123,12 +123,13 @@ const SingleVideo = () => {
                             </div>
                         </div>
                         <div className="likeSection">
-                            {like ? (
-                                <button className="likeBtn" onClick={handleLike}><img className="likeImg" src="https://res.cloudinary.com/dv3gxfdon/image/upload/v1654834311/heart_2_qwubjz.png"></img></button>
-                            ) : (
-                                <button className="likeBtn" onClick={handleLike}><img className="likeImg" src="https://res.cloudinary.com/dv3gxfdon/image/upload/v1654834312/heart_1_kwdvzx.png"></img></button>
-                            )}
-                            <p className="likeNum">{likes?.length}</p>
+                            <p className="likeNum">
+                                {like ? (
+                                    <button className="likeBtn" onClick={handleLike}><img className="likeImg" src="https://res.cloudinary.com/dv3gxfdon/image/upload/v1654834311/heart_2_qwubjz.png"></img></button>
+                                ) : (
+                                    <button className="likeBtn" onClick={handleLike}><img className="likeImg" src="https://res.cloudinary.com/dv3gxfdon/image/upload/v1654834312/heart_1_kwdvzx.png"></img></button>
+                                )}
+                                {likes?.length}</p>
                         </div>
                         <div className="chatbox">
                             <PostComment video={video} />

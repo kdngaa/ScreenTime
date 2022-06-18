@@ -46,7 +46,7 @@
     position: absolute;
     right: 0;
     margin-right: 11%;
-    bottom: 35%;
+    bottom: 45%;
 }
 
 
@@ -60,6 +60,9 @@
     font-family: "Anton", sans-serif;
     font-size: 65px;
     text-align: center;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
 }
 
 .deleteVidBtn{
