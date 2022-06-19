@@ -139,7 +139,7 @@ function Upload() {
                         </div>
                         <button className="updateBtn" type="Submit">Upload Video</button>
                         {(videoLoading) &&
-                            <img src="https://res.cloudinary.com/dv3gxfdon/image/upload/v1655608414/Example-gif-2_bbpvhw.gif" className="loadingImg" style={{ width: '250px', height: '250px' }} />
+                            <img src="https://res.cloudinary.com/dv3gxfdon/image/upload/v1655608414/Example-gif-2_bbpvhw.gif" className="loadingImg" style={{ width: '200px', height: '200px' }} />
                         }
                     </div>
                 </form>
