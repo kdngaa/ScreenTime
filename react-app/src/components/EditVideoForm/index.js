@@ -55,18 +55,19 @@ function EditVideo({ newVideo, prop }) {
     return (
         <section>
             {/* <Popup trigger={<button> Trigger</button>} position="right center"> */}
-                <form onSubmit={handleSubmit}>
-                    <div className="errors">
-                        <ul>
-                            {errors.map((error, indx) => (
-                                <li key={indx}>
-                                    {error}
-                                </li>
-                            ))}
-                        </ul>
-                    </div>
-                    <div>
-                        <label>Title</label>
+            <form onSubmit={handleSubmit}>
+                <div className="errors">
+                    <ul>
+                        {errors.map((error, indx) => (
+                            <li key={indx}>
+                                {error}
+                            </li>
+                        ))}
+                    </ul>
+                </div>
+                <div>
+                    <div className="vidEditSection">
+                        <p><label>Title</label></p>
                         <input
                             type="text"
                             name="title"
@@ -76,7 +77,7 @@ function EditVideo({ newVideo, prop }) {
                         />
                     </div>
                     <div>
-                        <label>Description</label>
+                        <p><label>Description</label></p>
                         <textarea
                             type="text"
                             name="description"
@@ -87,11 +88,11 @@ function EditVideo({ newVideo, prop }) {
                             className="editDesc"
                         />
                     </div>
+                </div>
 
+                <button type="submit" className='editBtn' disabled={errors.length > 0}>Update Video</button>
 
-                    <button type="submit" className='editBtn' disabled={errors.length > 0}>Update Video</button>
-
-                </form>
+            </form>
             {/* </Popup> */}
         </section>
     )
