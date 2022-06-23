@@ -169,7 +169,6 @@ const videoReducer = (state = initialState, action) => {
     case ADD_VIDEO:
       if (!state[action.video.id]) {
         newState = {...state}
-        console.log(action, "<<==============================")
           // [action.video.id]: action.video
         newState[action.video.uploadFile.id] = action.video.uploadFile;
         return newState
