@@ -76,7 +76,7 @@ export const loadVideoThunk = id => async dispatch => {
 
 
 
-// POST A VIDEO
+// POST A VIDEO/UPLOAD VIDEO
 export const postVideo = (videoId) => async dispatch => {
   const { userId, uploadFile, description, title } = videoId
 
