@@ -129,7 +129,7 @@ export const editAVideo = video => async dispatch => {
 
 
 
-//REMOVE VIDEO
+//REMOVE VIDEO/DELETE VIDEO
 export const removeAVideo = id => async dispatch => {
   const res = await fetch(`/api/videos/${id}`, {
     method: 'DELETE',
