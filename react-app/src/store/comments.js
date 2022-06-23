@@ -17,7 +17,7 @@ const load = comments => {
 }
 
 
-
+//LOAD COMMENT NOT BEING USED
 const loadOneComment = comment => ({
     type: LOAD_ONE_COMMENT,
     comment
