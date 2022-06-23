@@ -38,7 +38,7 @@ function EditVideo({ newVideo, prop }) {
         return null
     }
 
-    // console.log(newComment.id, "<=================================")
+   
 
     const handleSubmit = async (e) => {
         e.preventDefault()

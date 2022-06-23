@@ -66,7 +66,6 @@ const removeComment = id => {
 
 // POST A COMMENT
 export const postComment = (comment, id) => async dispatch => {
-    console.log(id, "============================================>")
     const res = await fetch(`/api/comments/${id}`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
@@ -156,7 +155,6 @@ const commentReducer = (state = initialState, action) => {
 
         case ADD_COMMENT:
             if (!state[action.comment.id]) {
-                console.log(action.comment, "<<<<<=====")
                 newState = {
                     ...state,
                     [action.comment.id]: action.comment

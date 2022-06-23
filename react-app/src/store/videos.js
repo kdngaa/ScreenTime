@@ -54,9 +54,7 @@ export const loadAllVideosThunk = () => async dispatch => {
   });
 
   if (result.ok) {
-    console.log("THIS IS A STRING")
     const videos = await result.json();
-    console.log(videos, "THIS IS A VIDEOOOOOOOOOOOOOOOOO")
     dispatch(load(videos))
     return result;
   }
@@ -162,7 +160,6 @@ const videoReducer = (state = initialState, action) => {
     case LOAD:
       const allVideos = {};
       action.videos.videos.forEach(video => {
-        console.log(video, "DAYTON LIKES CORNNNNNNNNNNNNNNNNNNN")
         allVideos[video.id] = video
       });
       return {

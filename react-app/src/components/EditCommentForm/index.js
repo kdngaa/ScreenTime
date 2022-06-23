@@ -34,7 +34,7 @@ function EditComment({ newComment, commentProp }) {
         return null
     }
 
-    console.log(newComment.id, "<=================================")
+    
 
     const handleSubmit = async (e) => {
         e.preventDefault()

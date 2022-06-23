@@ -85,7 +85,6 @@ const likeReducer = (state = initialState, action) => {
 
         case ADD_LIKE:
             if (!state[action.like.id]) {
-                console.log(action.like, "<<<<<=====")
                 newState = {
                     ...state,
                     [action.like.id]: action.like
