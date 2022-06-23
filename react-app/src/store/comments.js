@@ -46,7 +46,8 @@ const removeComment = id => {
     }
 }
 
-// // //GET ALL COMMENTS
+
+//THIS IS TO GET ALL COMMENTS
 // export const getComments = () => async dispatch => {
 //     const result = await fetch('/api/comments/', {
 //         headers: {
