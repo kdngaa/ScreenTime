@@ -96,7 +96,7 @@ export const loadComments = id => async dispatch => {
 
 
 
-//REMOVE COMMENT
+//REMOVE/DELETE COMMENT
 export const removeAComment = id => async dispatch => {
     const res = await fetch(`/api/comments/${id}`, {
         method: 'DELETE',
