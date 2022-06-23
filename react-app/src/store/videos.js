@@ -109,7 +109,7 @@ export const postVideo = (videoId) => async dispatch => {
 
 
 
-//EDIT VIDEO
+//EDIT VIDEO/UPDATE VIDEO
 export const editAVideo = video => async dispatch => {
   const res = await fetch(`/api/videos/${video.id}`, {
     method: 'PUT',
