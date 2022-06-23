@@ -45,7 +45,7 @@ const editVideo = video => ({
 
 
 
-
+//LOAD ALL VIDEOS
 export const loadAllVideosThunk = () => async dispatch => {
   const result = await fetch('/api/videos/', {
     headers: {
